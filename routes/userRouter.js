@@ -11,7 +11,6 @@ const usuario = {
 router.post("/login", (req, res) => {
   const user = req.body.user;
   const password = req.body.password;
-  console.log(user, password);
   let message = "";
   if (usuario.login === user && usuario.senha === password) {
     auth = true;
