@@ -1,0 +1,15 @@
+{{#if auth}}
+  <div
+    class="container-fluid h-100 w-100 bg-purple-300 d-flex flex-column justify-content-center align-content-center align-items-center"
+  >
+    <div>
+      <p> {{message}} </p>
+      <p> Bem vindo {{usuario.login}} </p>
+      {{#each usuario}}
+        <p> {{> user}} </p>
+      {{/each}}
+    </div>
+  </div>
+{{else}}
+  <p> Do login, please </p>
+{{/if}}

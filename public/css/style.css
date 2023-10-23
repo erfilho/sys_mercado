@@ -9,3 +9,19 @@ body {
   padding: 0;
   height: 100vh;
 }
+
+.bg-purple-200 {
+  background-color: #ce93d8;
+}
+
+.bg-purple-300 {
+  background-color: #ba68c8;
+}
+
+.bg-purple-400 {
+  background-color: #ab47bc;
+}
+
+.bg-purple-500 {
+  background-color: #9c27b0;
+}
