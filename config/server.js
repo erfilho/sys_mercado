@@ -3,6 +3,9 @@ let app = express();
 let consign = require("consign");
 const exphbs = require("express-handlebars");
 const User = require("../routes/userRouter");
+const Vendas = require("../routes/vendaRouter");
+const Clients = require("../routes/clientsRouter");
+const Products = require("../routes/productsRouter");
 
 // CONFIGURANDO O HANDLEBARS
 app.engine("handlebars", exphbs.engine());
@@ -24,6 +27,9 @@ app.use(express.json());
 
 // CONFIGURANDO O USO DAS ROTAS
 app.use("/users", User);
+app.use("/clientes", Clients);
+app.use("/produtos", Products);
+app.use("/vendas", Vendas);
 
 // CONFIGURANDO AS ROTAS
 app.get("/", (req, res) => {
