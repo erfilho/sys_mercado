@@ -1,13 +1,110 @@
 {{#if auth}}
   <div
-    class="container-fluid h-100 w-100 bg-purple-300 d-flex flex-column justify-content-center align-content-center align-items-center"
+    class="container-fluid h-100 w-100 bg-purple-300 d-flex flex-column align-items-start px-0"
   >
-    <div>
-      <p> {{message}} </p>
-      <p> Bem vindo {{usuario.login}} </p>
-      {{#each usuario}}
-        <p> {{> user}} </p>
-      {{/each}}
+    <nav id="navbar" class="navbar bg-purple-200 px-3 mb-1 w-100">
+      <a class="navbar-brand" href="#">SysMercado</a>
+      <ul id="main-navbar" class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#"> {{usuario.login}} </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Logout</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid px-0 w-100 d-flex flex-column gap-2">
+      <div class="container-fluid px-3 w-100 d-flex flex-row flex-wrap gap-2">
+        <div class="card" style="width: 18rem;">
+          <div
+            class="d-flex w-100 flex-column justify-content-center align-items-center align-content-center"
+          >
+            <i class="bi bi-cart my-3" style="font-size: 64px;"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Nova venda</h5>
+            <p class="card-text">Aqui você tem acesso ao cadastro de novas
+              vendas!</p>
+            <a href="#" class="btn btn-primary"> Clique aqui! </a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <div
+            class="d-flex w-100 flex-column justify-content-center align-items-center align-content-center"
+          >
+            <i class="bi bi-receipt my-3" style="font-size: 64px;"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Histórico de vendas</h5>
+            <p class="card-text">Aqui você tem acesso ao histórico de todas as
+              vendas!</p>
+            <a href="#" class="btn btn-primary"> Clique aqui! </a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <div
+            class="d-flex w-100 flex-column justify-content-center align-items-center align-content-center"
+          >
+            <i class="bi bi-file-person my-3" style="font-size: 64px;"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"> Clientes </h5>
+            <p class="card-text">Aqui você tem acesso ao cadastro e visualização
+              dos clientes!
+            </p>
+            <a href="#" class="btn btn-primary"> Clique aqui! </a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <div
+            class="d-flex w-100 flex-column justify-content-center align-items-center align-content-center"
+          >
+            <i class="bi bi-box2 my-3" style="font-size: 64px;"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"> Produtos </h5>
+            <p class="card-text">Aqui você tem acesso ao cadastro de produtos!
+            </p>
+            <a href="#" class="btn btn-primary"> Clique aqui! </a>
+          </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+          <div
+            class="d-flex w-100 flex-column justify-content-center align-items-center align-content-center"
+          >
+            <i class="bi bi-boxes my-3" style="font-size: 64px;"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"> Estoque </h5>
+            <p class="card-text">Aqui você tem acesso ao estoque e entrada de
+              produtos!
+            </p>
+            <a href="#" class="btn btn-primary"> Clique aqui! </a>
+          </div>
+        </div>
+      </div>
+
+      <main
+        class="container-fluid h-100 w-100 d-flex flex-sm-row px-0 gap-2 flex-column"
+      >
+        <div class="w-50 w-sm-100 h-100 bg-body-tertiary">
+          <p class="w-100 bg-body-secondary text-center fs-4"> Dashboard </p>
+          <div class="d-flex flex-column px-3">
+            <p> Total de vendas no mês: R$ ####,## </p>
+            <p> Total de clientes cadastrados: xx clientes </p>
+            <p> Total de produtos cadastrados: xx produtos </p>
+          </div>
+        </div>
+        <div class="w-50 sm:w-100 h-100">
+          <p class="w-100 bg-body-secondary text-center fs-4">
+            Produtos em falta
+          </p>
+        </div>
+      </main>
     </div>
   </div>
 {{else}}

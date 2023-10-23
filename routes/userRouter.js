@@ -2,12 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 var auth = false;
-const usuario = [
-  {
-    login: "admin",
-    senha: "admin",
-  },
-];
+const usuario = {
+  login: "admin",
+  senha: "admin",
+};
 
 // CONFIGURANDO A AUTENTICAÇÃO DE USUÁRIO
 router.post("/login", (req, res) => {
@@ -15,7 +13,7 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
   console.log(user, password);
   let message = "";
-  if (usuario[0].login === user && usuario[0].senha === password) {
+  if (usuario.login === user && usuario.senha === password) {
     auth = true;
     message = "Login efetuado com sucesso!";
     res.render("pagina_principal", { usuario, auth, message });
