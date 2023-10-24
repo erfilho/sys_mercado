@@ -13,10 +13,23 @@
       </li>
     </ul>
   </nav>
-  <table>
-
-  </table>
-
+  <div
+    class="container-fluid w-100 d-flex flex-column justify-content-center align-items-center align-content-center"
+  >
+    <div class="container-fluid w-75 d-flex flex-column">
+      <div class="w-100 text-center">
+        <h1 class="fs-4">Clientes cadastrados</h1>
+      </div>
+      <div>
+        <button class="btn btn-primary" onclick="verCad(0)">Cadastrar novo cliente</button>
+      </div>
+      <div class="d-flex flex-column gap-2">
+        {{#each clientes}}
+          {{> cliente}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
 {{else}}
   <p> Login please </p>
 {{/if}}

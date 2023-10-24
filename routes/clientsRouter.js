@@ -31,6 +31,29 @@ const estados = [
   { uf: "TO", estado: "Tocantins" },
 ];
 
+const clientes = [
+  {
+    id: 1,
+    nome: "João da Silva",
+    cpf: "123.456.789-00",
+  },
+  {
+    id: 2,
+    nome: "Maria da Silva",
+    cpf: "123.456.789-00",
+  },
+  {
+    id: 3,
+    nome: "José da Silva",
+    cpf: "123.456.789-00",
+  },
+  {
+    id: 4,
+    nome: "Joana da Silva",
+    cpf: "123.456.789-00",
+  },
+];
+
 // CONFIGURANDO A AUTENTICAÇÃO DE USUÁRIO
 router.get("/cadastro", (req, res) => {
   auth = true;
@@ -40,7 +63,7 @@ router.get("/cadastro", (req, res) => {
 // CONFIGURANDO A AUTENTICAÇÃO DE USUÁRIO
 router.get("/listagem", (req, res) => {
   auth = true;
-  res.render("listagem_clientes", { auth });
+  res.render("listagem_clientes", { auth, clientes });
 });
 
 module.exports = router;
