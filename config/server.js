@@ -14,6 +14,12 @@ const hbs = exphbs.create({
   partialsDir: ["views/partials"],
 });
 
+// CONFIGURANDO O HBS
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+
+
 // CONFIGURANDO A PASTA DOS ARQUIVOS ESTÁTICOS
 app.use(express.static("public"));
 

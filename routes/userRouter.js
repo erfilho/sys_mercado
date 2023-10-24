@@ -1,4 +1,5 @@
 const express = require("express");
+const cards = require("../data/cards");
 const router = express.Router();
 
 var auth = false;
@@ -15,7 +16,7 @@ router.post("/login", (req, res) => {
   if (usuario.login === user && usuario.senha === password) {
     auth = true;
     message = "Login efetuado com sucesso!";
-    res.render("pagina_principal", { usuario, auth, message });
+    res.render("pagina_principal", { usuario, auth, message, cards });
   } else {
     auth = false;
     message = "Usuário e/ou senha inválidos!";
