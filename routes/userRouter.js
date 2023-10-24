@@ -1,5 +1,5 @@
 const express = require("express");
-const cards = require("../data/cards");
+const cards = require("../public/js/cards");
 const router = express.Router();
 
 var auth = false;
