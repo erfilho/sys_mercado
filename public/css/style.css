@@ -25,3 +25,15 @@ body {
 .bg-purple-500 {
   background-color: #9c27b0;
 }
+
+/* tabelas*/
+
+.tabela_vendas{
+  max-height: 85vh;
+  overflow-y: auto;
+  display: block;
+  border: 1px solid #ccc;
+}
+.tabela_vendas a:hover{
+  cursor: pointer;
+}

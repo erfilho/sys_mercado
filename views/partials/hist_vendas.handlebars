@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<table class="table table-striped table-sm tabela_vendas">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Vendedor</th>
+      <th>Cliente</th>
+      <th>Lista de produtos</th>
+      <th>Valor total</th>
+      <th>Data da venda</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each dados}}
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.vendedor}}</td>
+      <td>{{this.cliente}}</td>
+      <td>
+      <a onclick="alert(`Dispara uma função que carrega os produtos ao da venda {{this.id}} ao lado, responsivo para mobile ainda não feito`)">
+          <i class="bi bi-arrow-right-circle-fill bi-sm ps-3"></i>
+        </a>
+      </td>
+      <td>{{this.valor_total}}</td>
+      <td>{{this.data_venda}}</td>
+      {{/each}}
+  </tbody>
+</table>
