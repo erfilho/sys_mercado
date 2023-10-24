@@ -28,8 +28,7 @@ body {
 
 /* tabelas*/
 
-
-.tabela_vendas table {
+.tabela_vendas .div-table {
   max-height: 75vh;
   overflow-y: auto;
   display: block;
@@ -40,7 +39,7 @@ body {
   cursor: pointer;
 }
 
-.tabela_produtos_venda table {
+.tabela_produtos_venda .div-table {
   max-height: 75vh;
   overflow-y: scroll;
   display: block;
@@ -49,4 +48,3 @@ body {
   table-layout: auto;
   border-collapse: collapse;
 }
-

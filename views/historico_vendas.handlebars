@@ -18,12 +18,14 @@
 
 </div>
 <div class="container-fluid m-3 d-flex flex-row justify-content-center main">
-  <div class="container-fluid d-flex flex-column text-center tabela_vendas">
+  <div class="container-fluid d-flex flex-column text-center tabela_vendas ">
     <h1>Todas as vendas</h1>
     {{> hist_vendas}}
   </div>
-  <div class="container d-flex flex-column text-center tabela_produtos_venda" id="detalhes">
-    <h1>Listagem de produtos da venda</h1>
+  <div class="container d-flex flex-column text-center tabela_produtos_venda">
+    <h1 id="listagem">Listagem de produtos da venda</h1>
+    <div class="div-table" id="detalhes">
+    </div>
   </div>
 </div>
 

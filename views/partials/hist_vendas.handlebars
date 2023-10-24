@@ -2,15 +2,16 @@
 
 <script src="/js/detalhes_venda.js"></script>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Vendedor</th>
-      <th>Cliente</th>
-      <th>Valor total</th>
-      <th>Data da venda</th>
-      <th>Lista de produtos</th>
+<div class="div-table w-100 table-responsive">
+  <table class="table">
+  <thead class="w-100">
+    <tr scope="row">
+      <th scope="col">Id</th>
+      <th scope="col">Vendedor</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Valor total</th>
+      <th scope="col">Data da venda</th>
+      <th scope="col">Lista de produtos</th>
     </tr>
   </thead>
   <tbody>
@@ -29,3 +30,4 @@
       {{/each}}
   </tbody>
 </table>
+</div>
