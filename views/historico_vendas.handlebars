@@ -13,12 +13,17 @@
     </li>
   </ul>
 </nav>
-<div class="container-fluid m-3  d-flex flex-row ">
-  <div class="container">
+<div class="container-fluid d-flex justify-content-center ">
+  <h1>Histórico de vendas</h1>
+
+</div>
+<div class="container-fluid m-3 d-flex flex-row justify-content-center main">
+  <div class="container-fluid d-flex flex-column text-center tabela_vendas">
+    <h1>Todas as vendas</h1>
     {{> hist_vendas}}
   </div>
-  <div class="container">
-    <h1>Teste</h1>
+  <div class="container d-flex flex-column text-center tabela_produtos_venda" id="detalhes">
+    <h1>Listagem de produtos da venda</h1>
   </div>
 </div>
 

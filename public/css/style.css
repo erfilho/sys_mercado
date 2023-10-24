@@ -28,12 +28,25 @@ body {
 
 /* tabelas*/
 
-.tabela_vendas{
-  max-height: 85vh;
+
+.tabela_vendas table {
+  max-height: 75vh;
   overflow-y: auto;
   display: block;
   border: 1px solid #ccc;
 }
-.tabela_vendas a:hover{
+
+.tabela_vendas a:hover {
   cursor: pointer;
 }
+
+.tabela_produtos_venda table {
+  max-height: 75vh;
+  overflow-y: scroll;
+  display: block;
+  border: 1px solid #ccc;
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
