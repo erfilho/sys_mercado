@@ -25,10 +25,10 @@ function cards() {
       icon: "bi bi-file-earmark-bar-graph",
     },
     {
-      title: "Cadastro de Usuários",
-      text: "Aqui você tem acesso ao cadastro dos usuários!",
-      link: "/usuarios/cadastro",
-      icon: "bi bi-person-plus",
+      title: "Clientes cadastrados",
+      text: "Aqui você tem acesso ao cadastro dos clientes!",
+      link: "/clientes/listagem",
+      icon: "bi bi-person-lines-fill",
     },
     {
       title: "Estoque",
