@@ -1,9 +1,17 @@
-const express = require('express');
+const express = require("express");
+const conn = require("./db/conn");
+const clientModel = require("./models/Clients");
 let app = require("./config/server");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-app.listen(3000, () => {
-  console.log("Servidor Online!");
-  console.log("Link para acesso: http://localhost:3000");
-});
+conn
+  .sync()
+  .then(() => {
+    app.listen(3000, () => {
+      console.log("Click here: http://localhost:3000");
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });

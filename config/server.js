@@ -7,6 +7,8 @@ const User = require("../routes/userRouter");
 const Vendas = require("../routes/vendaRouter");
 const Clients = require("../routes/clientsRouter");
 const Products = require("../routes/productsRouter");
+const conn = require("../db/conn");
+const clientModel = require("../models/Clients");
 const flash = require("connect-flash");
 const FileStore = require("session-file-store")(session);
 
@@ -87,7 +89,5 @@ app.get("/login", (req, res) => {
 app.use(function (req, res) {
   res.status(404).render("404");
 });
-
-consign().then("/config/dbConnection.js").then("/models").into(app);
 
 module.exports = app;
