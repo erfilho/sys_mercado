@@ -29,6 +29,10 @@ Este projeto é um mercadinho simples desenvolvido utilizando Node.js, Express e
 
 Agora você pode acessar o mercadinho em [http://localhost:3000](http://localhost:3000).
 
+## Dados de login
+- Usuário `admin`
+- Senha `admin`
+
 ## Recursos
 
 - Exibir estoque de produtos
