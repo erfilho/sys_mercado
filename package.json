@@ -1,13 +1,13 @@
 {
-  "name": "teste_servidor_js",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Sistema de mercadinho",
+  "version": "alpha0.1",
+  "description": "Sistema criado para ser um sistema simples de controle de mercado com controle de vendas, clientes e estoque",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon app.js"
   },
-  "author": "",
+  "author": "Erineldo Filho, Alan Marinho, Janiel Silva, Rubens Lima",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
