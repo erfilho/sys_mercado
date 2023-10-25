@@ -1,5 +1,5 @@
 {
-  "name": "Sistema de mercadinho",
+  "name": "sys_mercado",
   "version": "alpha0.1",
   "description": "Sistema criado para ser um sistema simples de controle de mercado com controle de vendas, clientes e estoque",
   "main": "app.js",
