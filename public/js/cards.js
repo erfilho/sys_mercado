@@ -15,25 +15,25 @@ function cards() {
     {
       title: "Cadastro de Clientes",
       text: "Aqui você tem acesso ao cadastro dos clientes!",
-      link: "/clientes/cadastro",
+      link: "/clientes/add",
       icon: "bi bi-file-person",
     },
     {
       title: "Cadastro de Produtos",
       text: "Aqui você tem acesso ao cadastro dos produtos!",
-      link: "/produtos/cadastro",
+      link: "/produtos/add",
       icon: "bi bi-file-earmark-bar-graph",
     },
     {
       title: "Clientes cadastrados",
       text: "Aqui você tem acesso ao cadastro dos clientes!",
-      link: "/clientes/listagem",
+      link: "/clientes",
       icon: "bi bi-person-lines-fill",
     },
     {
       title: "Estoque",
       text: "Aqui você tem acesso ao estoque!",
-      link: "/produtos/estoque",
+      link: "/produtos",
       icon: "bi bi-archive",
     },
   ];

@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db/conn");
 
-const clients = db.define("Clients", {
+const Clients = db.define("Clients", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -16,11 +16,9 @@ const clients = db.define("Clients", {
     allowNull: false,
   },
   address: {
-    type: DataTypes.STRING,
+    type: DataTypes.JSONB,
     allowNull: false,
   },
 });
 
-console.log(clients === db.models.Clients);
-
-module.exports = clients;
+module.exports = Clients;

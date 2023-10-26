@@ -16,7 +16,7 @@ router.post("/login", (req, res) => {
   if (usuario.login === user && usuario.senha === password) {
     auth = true;
     message = "Login efetuado com sucesso!";
-    res.render("pagina_principal", { usuario, auth, message, cards });
+    res.render("paginaPrincipal", { usuario, auth, message, cards });
   } else {
     auth = false;
     message = "Usuário e/ou senha inválidos!";

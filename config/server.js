@@ -1,6 +1,5 @@
 let express = require("express");
 let app = express();
-let consign = require("consign");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const User = require("../routes/userRouter");
