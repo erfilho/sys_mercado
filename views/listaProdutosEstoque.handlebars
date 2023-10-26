@@ -1,4 +1,4 @@
-{{#if auth}}
+
   <nav id="navbar" class="navbar bg-purple-200 px-3 mb-1 w-100">
     <a class="navbar-brand" href="#">SysMercado</a>
     <ul id="main-navbar" class="nav nav-pills">
@@ -6,7 +6,7 @@
         <a class="nav-link disabled" href="#"> {{usuario.login}} </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#"> Clientes Cadastrados </a>
+        <a class="nav-link disabled" href="#"> Estoque de Produtos </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/login">Logout</a>
@@ -18,18 +18,15 @@
   >
     <div class="container-fluid w-75 d-flex flex-column">
       <div class="w-100 text-center">
-        <h1 class="fs-4">Clientes cadastrados</h1>
+        <h1 class="fs-4"> Estoque </h1>
       </div>
       <div>
-        <button class="btn btn-primary" onclick="verCad(0)">Cadastrar novo cliente</button>
+        <a class="btn btn-primary" href="/produtos/add"> Cadastrar produto </a>
       </div>
       <div class="d-flex flex-column gap-2">
-        {{#each clientes}}
-          {{> cliente}}
+        {{#each produtos}}
+          {{> produto}}
         {{/each}}
       </div>
     </div>
   </div>
-{{else}}
-  <p> Login please </p>
-{{/if}}

@@ -1,7 +1,8 @@
 const express = require("express");
 const conn = require("./db/conn");
+const app = require("./config/server");
 const clientModel = require("./models/Clients");
-let app = require("./config/server");
+require("dotenv").config();
 
 app.use(express.static("public"));
 

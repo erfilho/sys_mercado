@@ -1,4 +1,3 @@
-{{#if auth}}
   <nav id="navbar" class="navbar bg-purple-200 px-3 mb-1 w-100">
     <a class="navbar-brand" href="#">SysMercado</a>
     <ul id="main-navbar" class="nav nav-pills">
@@ -10,7 +9,7 @@
       </li>
     </ul>
   </nav>
-  <form class="container-fluid w-50 d-flex flex-column gap-2">
+  <form class="container-fluid w-50 d-flex flex-column gap-2" method="post" action="/produtos/add">
     <p class="fs-4 text-center">Cadastro de Produtos</p>
     <div class="form-group w-25">
       <label for="cod_produto">Código do produto</label>
@@ -18,6 +17,7 @@
         type="number"
         class="form-control"
         id="cod_produto"
+        name="cod_produto"
         placeholder="Código"
       />
     </div>
@@ -27,6 +27,7 @@
         type="text"
         class="form-control"
         id="nome_produto"
+        name="nome_produto"
         placeholder="Nome"
       />
     </div>
@@ -34,7 +35,7 @@
     <div class="row d-flex flex-row w-100">
       <div class="col-6">
         <label for="categoria_produto"> Categoria </label>
-        <select class="form-control" id="categoria_produto">
+        <select class="form-control" id="categoria_produto" name="categoria_produto">
           <option> Limpeza </option>
           <option> Alimentícios </option>
           <option> Bebidas </option>
@@ -52,7 +53,7 @@
     <div class="row d-flex flex-row w-100">
       <div class="col-6">
         <label for="localizacao_produto"> Localização </label>
-        <select class="form-control" id="localizacao_produto">
+        <select class="form-control" id="localizacao_produto" name="localizacao_produto">
           <option> Prateleira 1 </option>
           <option> Prateleira 2 </option>
           <option> Prateleira 3 </option>
@@ -69,12 +70,12 @@
 
     <div class="form-group w-25">
       <label for="cod_produto">Valor</label>
-      <input type="text" class="form-control" id="nome_produto" />
+      <input type="text" class="form-control" id="valor_produto"  name="valor_produto" />
     </div>
 
     <div class="form-group w-25">
       <label for="cod_produto">Estoque atual </label>
-      <input type="text" class="form-control" id="nome_produto" />
+      <input type="text" class="form-control" id="estoque_produto"  name="estoque_produto" />
     </div>
 
     <div class="form-group w-100">
@@ -82,7 +83,8 @@
       <textarea
         type="textarea"
         class="form-control"
-        id="nome_produto"
+        id="descricao_produto"
+        name="descricao_produto"
         rows="3"
       ></textarea>
     </div>
@@ -92,6 +94,3 @@
     </div>
     </form>
   </div>
-{{else}}
-  <p> Login please </p>
-{{/if}}
