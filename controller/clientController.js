@@ -1,4 +1,4 @@
-const Clients = require("../models/Clients");
+const Clients = require("../models/clients");
 
 module.exports = class ClientController {
   static novoClient(req, res) {
@@ -10,13 +10,12 @@ module.exports = class ClientController {
       name: req.body.nome_cliente,
       cpf: req.body.cpf_cliente,
       phone: req.body.celular,
-      address: {
-        street: req.body.rua,
-        number: req.body.numero,
-        neighborhood: req.body.bairro,
-        city: req.body.cidade,
-        state: req.body.estado,
-      },
+      street: req.body.endereco,
+      number: req.body.numero,
+      neighbourhood: req.body.bairro,
+      additional_info: req.body.complemento,
+      city: req.body.cidade,
+      state: req.body.estado,
     };
     console.log(cliente);
     await Clients.create(cliente);

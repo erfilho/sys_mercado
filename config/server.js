@@ -7,7 +7,6 @@ const Vendas = require("../routes/vendaRouter");
 const Clients = require("../routes/clientsRouter");
 const Products = require("../routes/productsRouter");
 const conn = require("../db/conn");
-const clientModel = require("../models/Clients");
 const flash = require("connect-flash");
 const FileStore = require("session-file-store")(session);
 

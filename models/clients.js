@@ -15,8 +15,28 @@ const Clients = db.define("Clients", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  address: {
-    type: DataTypes.JSONB,
+  street: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  number: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  neighbourhood: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  additional_info: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  city: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  state: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });
