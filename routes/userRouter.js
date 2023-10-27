@@ -8,6 +8,10 @@ const usuario = {
   senha: "admin",
 };
 
+router.get("/", (req, res) => {
+  res.render("login");
+});
+
 // CONFIGURANDO A AUTENTICAÇÃO DE USUÁRIO
 router.post("/login", (req, res) => {
   const user = req.body.user;
