@@ -1,16 +1,23 @@
 <div
-  class="d-flex flex-row rounded border border-1 justify-content-around align-items-center align-content-center"
+  class="d-flex flex-column rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 gap-2"
 >
-  <p class="col-1 text-center align-content-center align-items-center my-0">
-    {{this.id}}
-  </p>
-  <p class="col-5 my-0"> {{this.name}} </p>
-  <p class="col-3 my-0"> {{this.cpf}} </p>
-  <p class="col-3 my-0"> {{this.phone}} </p>
-  <p class="col-3 my-0">
-    {{this.street}}
-  </p>
-  <button class="col-2 my-0 btn btn-danger" onclick="verCad({{this.id}})">
-    Ver cadastro
-  </button>
+  <div
+    class="d-flex flex-row rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1"
+  >
+    <p class="col-5 my-0"> {{this.name}} </p>
+    <p class="col-3 my-0"> {{this.cpf}} </p>
+    <p class="col-2 my-0"> {{this.phone}} </p>
+    {{!-- Botões para edição e deleção --}}
+    {{> buttonEdit}}
+    {{> buttonDelete}}
+  </div>
+  <!-- Tela de confirmação -->
+  {{> confirmDelete}}
 </div>
+<!-- Script para abrir e fechar a tela de confirmação -->
+<script>
+  function openConfirmation(id) {
+  document.getElementById(`confirmation${id}`).style.display = "flex"; }
+  function closeConfirmation(id) {
+  document.getElementById(`confirmation${id}`).style.display = "none"; }
+</script>

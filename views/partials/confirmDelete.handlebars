@@ -1,0 +1,18 @@
+<div
+  id="confirmation{{this.id}}"
+  class="alert alert-danger w-100 flex-row gap-3 justify-content-around align-items-center align-content-center my-0"
+  style="display: none;"
+>
+  <p>Tem certeza que deseja apagar o cliente?</p>
+  <form action="/clientes/delete/{{this.id}}" method="POST">
+    <div>
+      <input type="hidden" name="clienteId" value="{{cliente.id}}" />
+      <button type="submit" class="btn btn-danger">Confirmar</button>
+      <button
+        type="button"
+        onclick="closeConfirmation({{this.id}})"
+        class="btn btn-secondary"
+      >Cancelar</button>
+    </div>
+  </form>
+</div>

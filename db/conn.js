@@ -1,8 +1,19 @@
-const { Sequelize } = require("sequelize");
+require("dotenv").config();
 
-const sequelize = new Sequelize("sys_mercado", "devJs", "123456", {
-  host: "localhost",
-  dialect: "postgres",
+const { Sequelize } = require("sequelize");
+const [db, host, user, password, dialect] = [
+  process.env.DB_NAME,
+  process.env.DB_HOST,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  process.env.DB_DIALECT,
+];
+
+console.log(db, host, user, password);
+
+const sequelize = new Sequelize(db, user, password, {
+  host: host,
+  dialect: dialect,
 });
 
 try {

@@ -1,8 +1,10 @@
 const Clients = require("../models/clients");
+const estados = require("../public/js/states");
 
 module.exports = class ClientController {
   static novoClient(req, res) {
-    res.render("cadastroCliente");
+    console.log(estados);
+    res.render("cadastroCliente", { estados });
   }
 
   static async novoClientSave(req, res) {
@@ -33,7 +35,8 @@ module.exports = class ClientController {
       where: { id: req.params.id },
       raw: true,
     });
-    res.render("editaCliente", { cliente });
+    console.log(cliente);
+    res.render("editaCliente", { cliente, estados });
   }
   static async editaClienteSave(req, res) {
     const cliente = {
@@ -47,7 +50,22 @@ module.exports = class ClientController {
       city: req.body.cidade,
       state: req.body.estado,
     };
-    await (await Clients.update(cliente, { where: { id: req.params.id } }))
+    await Clients.update(cliente, { where: { id: req.params.id } })
+      .then(res.redirect("/clientes/"))
+      .catch((err) => console.log(err));
+  }
+
+  static async apagaCliente(req, res) {
+    const cliente = await Clients.findOne({
+      where: { id: req.params.id },
+      raw: true,
+    });
+    console.log(cliente);
+    res.render("apagaCliente", { cliente });
+  }
+
+  static async apagaClienteConfirma(req, res) {
+    await Clients.destroy({ where: { id: req.params.id } })
       .then(res.redirect("/clientes/"))
       .catch((err) => console.log(err));
   }

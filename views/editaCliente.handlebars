@@ -9,8 +9,8 @@
       </li>
     </ul>
   </nav>
-  <form class="container-fluid w-50 d-flex flex-column gap-2" action="/clientes/add" method="post">
-    <p class="fs-4 text-center">Cadastro de Clientes</p>
+  <form class="container-fluid w-50 d-flex flex-column gap-2" action="/clientes/edit/{{cliente.id}}" method="post">
+    <p class="fs-4 text-center"> </p>
     <div class="form-group w-50">
       <label for="cpf_cliente">CPF/CNPJ:</label>
       <input
@@ -18,6 +18,7 @@
         class="form-control"
         id="cpf_cliente"
         name="cpf_cliente"
+        value="{{cliente.cpf}}"
         placeholder="CPF/CNPJ"
       />
     </div>
@@ -28,45 +29,48 @@
         class="form-control"
         id="nome_cliente"
         name="nome_cliente"
+        value="{{cliente.name}}"
         placeholder="Nome"
       />
     </div>
 
     <div class="form-group w-25">
       <label for="celular"> Celular </label>
-      <input type="text" class="form-control" id="celular" name="celular" placeholder="(DDD) XXXXX-XXXX" />
+      <input type="text" class="form-control" id="celular" name="celular" value="{{cliente.phone}}" placeholder="(DDD) XXXXX-XXXX" />
     </div>
 
     <div class="w-100 d-flex flex-row gap-2">
       <div class="form-group w-75">
-        <label for="endereco"> Endereço </label>
-        <input type="text" class="form-control" id="endereco" name="endereco" />
+        <label for="endereco"> Logradouro </label>
+        <input type="text" class="form-control" id="endereco" value="{{cliente.street}}" name="endereco" />
       </div>
       <div class="form-group w-25">
         <label for="endereco"> Número </label>
-        <input type="text" class="form-control" id="numero" name="numero" />
+        <input type="text" class="form-control" id="numero" value="{{cliente.number}}" name="numero" />
       </div>
     </div>
 
     <div class="w-100 d-flex flex-row gap-2">
       <div class="form-group w-50">
         <label for="endereco"> Bairro </label>
-        <input type="text" class="form-control" id="bairro" name="bairro" />
+        <input type="text" class="form-control" id="bairro" value="{{cliente.neighbourhood}}" name="bairro" />
       </div>
       <div class="form-group w-50">
         <label for="endereco"> Complemento </label>
-        <input type="text" class="form-control" id="complemento" name="complemento" />
+        <input type="text" class="form-control" id="complemento" value="{{cliente.additional_info}}" name="complemento" />
       </div>
     </div>
 
     <div class="w-100 d-flex flex-row gap-2">
       <div class="form-group w-75">
         <label for="endereco"> Cidade </label>
-        <input type="text" class="form-control" id="cidade" name="cidade" />
+        <input type="text" class="form-control" id="cidade" value="{{cliente.city}}" name="cidade" />
       </div>
       <div class="form-group w-25">
         <label for="estado"> Estado </label>
         <select class="form-control" id="estado" name="estado">
+          
+          <option value="{{cliente.state}}"> {{cliente.state}} </option>
           {{#each estados}}
               <option value="{{this.state}}"> {{this.estado}} </option>
           {{/each}}
@@ -75,8 +79,8 @@
     </div>
     </div>
     <div class="d-flex flex-row justify-content-end gap-3">
-      <button type="submit" class="btn btn-success">Cadastrar</button>
-      <button type="clean" class="btn btn-secondary">Limpar</button>
+      <button type="submit" class="btn btn-success"> Salvar </button>
+      <a class="btn btn-secondary" href="/clientes/">Cancelar</a>
     </div>
     </form>
   </div>
