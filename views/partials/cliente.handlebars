@@ -8,11 +8,11 @@
     <p class="col-3 my-0"> {{this.cpf}} </p>
     <p class="col-2 my-0"> {{this.phone}} </p>
     {{!-- Botões para edição e deleção --}}
-    {{> buttonEdit}}
+    {{> buttonEdit route='/clientes/edit'}}
     {{> buttonDelete}}
   </div>
   <!-- Tela de confirmação -->
-  {{> confirmDelete}}
+  {{> confirmDelete route='/clientes/delete'}}
 </div>
 <!-- Script para abrir e fechar a tela de confirmação -->
 <script>

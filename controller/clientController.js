@@ -55,15 +55,6 @@ module.exports = class ClientController {
       .catch((err) => console.log(err));
   }
 
-  static async apagaCliente(req, res) {
-    const cliente = await Clients.findOne({
-      where: { id: req.params.id },
-      raw: true,
-    });
-    console.log(cliente);
-    res.render("apagaCliente", { cliente });
-  }
-
   static async apagaClienteConfirma(req, res) {
     await Clients.destroy({ where: { id: req.params.id } })
       .then(res.redirect("/clientes/"))

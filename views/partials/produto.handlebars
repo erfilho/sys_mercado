@@ -11,11 +11,11 @@
     <p class="col-1 my-0"> {{this.value}} </p>
     <p class="col-1 my-0"> {{this.stock}} </p>
     {{!-- Botões para edição e deleção --}}
-    {{> buttonEdit}}
+    {{> buttonEdit route='/produtos/edit'}}
     {{> buttonDelete}}
   </div>
   <!-- Tela de confirmação -->
-  {{> confirmDelete}}
+  {{> confirmDelete route='/produtos/delete'}}
 </div>
 <!-- Script para abrir e fechar a tela de confirmação -->
 <script>
