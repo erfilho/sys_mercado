@@ -1,16 +1,19 @@
 const express = require("express");
 const cards = require("../public/js/cards");
+const UserController = require("../controller/userController");
 const router = express.Router();
+
+router.get("/add", UserController.novoUser);
+router.post("/add", UserController.novoUserSave);
+router.get("/", UserController.listaUsers);
+router.get("/edit/:id", UserController.editaUser);
+router.post("/edit/:id", UserController.editaUserSave);
 
 var auth = false;
 const usuario = {
   login: "admin",
   senha: "admin",
 };
-
-router.get("/", (req, res) => {
-  res.render("login");
-});
 
 // CONFIGURANDO A AUTENTICAÇÃO DE USUÁRIO
 router.post("/login", (req, res) => {

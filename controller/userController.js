@@ -2,24 +2,20 @@ const Users = require("../models/Users");
 
 module.exports = class UserController {
   static novoUser(req, res) {
-    res.render("cadastroCliente");
+    res.render("cadastroUser");
   }
 
   static async novoUserSave(req, res) {
+    console.log("salva user");
     const user = {
-      name: req.body.nome_cliente,
-      cpf: req.body.cpf_cliente,
-      phone: req.body.celular,
-      street: req.body.endereco,
-      number: req.body.numero,
-      neighbourhood: req.body.bairro,
-      additional_info: req.body.complemento,
-      city: req.body.cidade,
-      state: req.body.estado,
+      user: req.body.usuario,
+      name: req.body.nome_usuario,
+      cpf: req.body.cpf_usuario,
+      password: req.body.senha_usuario,
     };
-    console.log(user);
+    console.log(req.body);
     await Users.create(user);
-    res.redirect("/users/");
+    res.redirect("/");
   }
 
   static async listaUsers(req, res) {
@@ -38,15 +34,10 @@ module.exports = class UserController {
 
   static async editaUserSave(req, res) {
     const user = {
-      name: req.body.nome_cliente,
-      cpf: req.body.cpf_cliente,
-      phone: req.body.celular,
-      street: req.body.endereco,
-      number: req.body.numero,
-      neighbourhood: req.body.bairro,
-      additional_info: req.body.complemento,
-      city: req.body.cidade,
-      state: req.body.estado,
+      user: req.body.usuario,
+      name: req.body.nome_usuario,
+      cpf: req.body.cpf_usuario,
+      password: req.body.senha_usuario,
     };
     await (await Users.update(user, { where: { id: req.params.id } }))
       .then(res.redirect("/users/"))
