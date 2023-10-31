@@ -1,17 +1,7 @@
   <div
     class="container-fluid h-100 w-100 bg-purple-300 d-flex flex-column align-items-start px-0"
   >
-    <nav id="navbar" class="navbar bg-purple-200 px-3 mb-1 w-100">
-      <a class="navbar-brand" href="#">SysMercado</a>
-      <ul id="main-navbar" class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#"> {{usuario.login}} </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Logout</a>
-        </li>
-      </ul>
-    </nav>
+    {{> navBar tela="Página Principal"}}
     <div class="container-fluid px-0 w-100 d-flex flex-column gap-2">
       <div
         class="container-fluid px-3 w-100 d-flex flex-row flex-wrap gap-2 justify-content-center align-content-center align-items-center"
