@@ -1,9 +1,9 @@
 <div
   id="confirmation{{this.id}}"
-  class="alert alert-danger w-100 flex-row gap-3 justify-content-around align-items-center align-content-center my-0"
+  class="alert alert-danger w-100 mx-4 flex-row gap-3 justify-content-around align-items-center align-content-center my-0"
   style="display: none;"
 >
-  <p>Você realmente deseja apagar?</p>
+  <p class="fs-5 fw-medium">Você realmente deseja apagar?</p>
   <form action="{{route}}/{{this.id}}" method="POST">
     <div>
       <input type="hidden" name="clienteId" value="{{cliente.id}}" />

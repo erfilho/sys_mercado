@@ -1,26 +1,12 @@
-<div
-  class="d-flex flex-column rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 gap-2"
->
-  <div
-    class="d-flex flex-row rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1"
-  >
-    <p class="col-1 my-0"> {{this.cod}} </p>
-    <p class="col-3 my-0"> {{this.name}} </p>
-    <p class="col-2 my-0"> {{this.category}} </p>
-    <p class="col-2 my-0"> {{this.localization}} </p>
-    <p class="col-1 my-0"> {{this.value}} </p>
-    <p class="col-1 my-0"> {{this.stock}} </p>
-    {{!-- Botões para edição e deleção --}}
-    {{> buttonEdit route='/produtos/edit'}}
-    {{> buttonDelete}}
-  </div>
-  <!-- Tela de confirmação -->
-  {{> confirmDelete route='/produtos/delete'}}
+<p class="col-1 my-2 text-center"> {{this.cod}} </p>
+<p class="col-3 my-2 text-center"> {{this.name}} </p>
+<p class="col-2 my-2 text-center"> {{this.category}} </p>
+<p class="col-2 my-2 text-center"> {{this.localization}} </p>
+<p class="col-1 my-2 text-center"> {{this.value}} </p>
+<p class="col-1 my-2"> {{this.stock}} un </p>
+<div class="col-2 d-flex flex-row my-2 gap-2 align-content-end justify-content-center">
+  {{> buttonEdit route='/produtos/edit'}}
+  {{> buttonDelete}}
 </div>
-<!-- Script para abrir e fechar a tela de confirmação -->
-<script>
-  function openConfirmation(id) {
-  document.getElementById(`confirmation${id}`).style.display = "flex"; }
-  function closeConfirmation(id) {
-  document.getElementById(`confirmation${id}`).style.display = "none"; }
-</script>
+<hr class="my-0" />
+{{> confirmDelete route='/produtos/delete'}}

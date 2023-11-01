@@ -1,23 +1,8 @@
-<div
-  class="d-flex flex-column rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 gap-2"
->
-  <div
-    class="d-flex flex-row rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1"
-  >
-    <p class="col-5 my-0"> {{this.name}} </p>
-    <p class="col-3 my-0"> {{this.cpf}} </p>
-    <p class="col-2 my-0"> {{this.phone}} </p>
-    {{!-- Botões para edição e deleção --}}
-    {{> buttonEdit route='/clientes/edit'}}
-    {{> buttonDelete}}
-  </div>
-  <!-- Tela de confirmação -->
-  {{> confirmDelete route='/clientes/delete'}}
+<p class="col-5 my-2 px-5"> {{this.name}} </p>
+<p class="col-3 my-2 text-center"> {{this.cpf}} </p>
+<p class="col-2 my-2 text-center"> {{this.phone}} </p>
+<div class="col-2 d-flex flex-row my-2 gap-2 align-content-end justify-content-center">
+  {{> buttonEdit route='/clientes/edit'}}
+  {{> buttonDelete}}
 </div>
-<!-- Script para abrir e fechar a tela de confirmação -->
-<script>
-  function openConfirmation(id) {
-  document.getElementById(`confirmation${id}`).style.display = "flex"; }
-  function closeConfirmation(id) {
-  document.getElementById(`confirmation${id}`).style.display = "none"; }
-</script>
+  {{> confirmDelete route='/clientes/delete'}}
