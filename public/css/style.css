@@ -48,3 +48,7 @@ body {
   table-layout: auto;
   border-collapse: collapse;
 }
+
+.col-xs-12 {
+  height: 100vh;
+}

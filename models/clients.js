@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const Users = require("./Users");
 const db = require("../db/conn");
 
 const Clients = db.define("Clients", {
@@ -40,5 +41,8 @@ const Clients = db.define("Clients", {
     allowNull: false,
   },
 });
+
+Clients.belongsTo(Users);
+Users.hasMany(Clients);
 
 module.exports = Clients;

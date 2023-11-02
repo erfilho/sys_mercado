@@ -2,7 +2,7 @@ const Products = require("../models/Products");
 
 module.exports = class ProductController {
   static novoProduto(req, res) {
-    res.render("cadastroProduto");
+    res.render("produtos/cadastroProduto");
   }
 
   static async novoProdutoSave(req, res) {
@@ -23,12 +23,12 @@ module.exports = class ProductController {
   static async listaEstoqueProdutos(req, res) {
     const produtos = await Products.findAll({ raw: true });
     console.log(produtos);
-    res.render("listaProdutosEstoque", { produtos });
+    res.render("produtos/listaProdutosEstoque", { produtos });
   }
 
   static async editaProduto(req, res) {
     const produto = await Products.findByPk(req.params.id, { raw: true });
-    res.render("editaProduto", { produto });
+    res.render("produtos/editaProduto", { produto });
   }
 
   static async editaProdutoSave(req, res) {

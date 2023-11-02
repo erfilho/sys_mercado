@@ -1,0 +1,112 @@
+<div class="m-0 p-0 row min-vh-100 h-100 w-100 bg-purple-300">
+  {{!-- <div class="w-25 h-75 bg-body-tertiary rounded-5">
+    <header
+      class="w-100 d-flex flex-column justify-content-center align-content-center align-items-center"
+    >
+      <img
+        src="/assets/images/favicon.svg"
+        alt="Logo"
+        class="img-fluid w-25 mt-5"
+      />
+    </header>
+    <form
+      class="w-100 d-flex flex-column px-5 gap-2 align-items-center mt-5"
+      action="/users/login"
+      method="post"
+    >
+      <label for="user" class="form-label w-100"> Digite seu usuário: </label>
+      <input
+        type="text"
+        name="user"
+        id="user_input"
+        class="form-control"
+        placeholder="Usuário"
+      />
+      <label for="password" class="form-label w-100">
+        Digite sua senha:
+      </label>
+      <input
+        type="password"
+        name="password"
+        id="password_input"
+        class="form-control"
+        placeholder="Senha"
+      />
+      <a class="form-text w-100 text-decoration-none text-opacity-50" href="#">
+        Esqueci a senha
+      </a>
+      <input type="submit" value="Login" class="btn btn-primary w-50" />
+      {{#if messages}}
+        {{#if messages.message}}
+          <div class="alert alert-danger text-center w-100" role="alert">
+            {{messages.message}}
+          </div>
+        {{/if}}
+      {{/if}}
+    </form>
+  </div> --}}
+  <div
+    class="m-0 p-0 col-sm-12 col-xs-12 col-lg-10 d-flex flex-row flex-wrap h-100 justify-content-center align-items-center"
+  >
+    <div
+      class="col-xs-12 col-sm-12 col-md-6 col-lg-5 h-75 bg-body-tertiary d-flex flex-column align-items-center justify-content-center"
+    >
+      <div
+        class="h-100 col-xs-12 col-sm-12 col-md-10 col-lg-8 col-12 d-flex flex-column justify-content-center"
+      >
+        <header
+          class="w-100 d-flex flex-column justify-content-center align-content-center align-items-center"
+        >
+          <img
+            src="/assets/images/favicon.svg"
+            alt="Logo"
+            class="img-fluid w-25 mt-5"
+          />
+        </header>
+        <form
+          class="w-100 d-flex flex-column px-5 gap-2 align-items-center mt-5"
+          action="/users/login"
+          method="post"
+        >
+          <label for="user" class="form-label w-100">
+            Digite seu usuário:
+          </label>
+          <input
+            type="text"
+            name="user"
+            id="user_input"
+            class="form-control"
+            placeholder="Usuário"
+          />
+          <label for="password" class="form-label w-100">
+            Digite sua senha:
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password_input"
+            class="form-control"
+            placeholder="Senha"
+          />
+          <a
+            class="form-text w-100 text-decoration-none text-opacity-50"
+            href="#"
+          >
+            Esqueci a senha
+          </a>
+          <input type="submit" value="Login" class="btn btn-primary w-50" />
+          {{#if messages}}
+            {{#if messages.message}}
+              <div class="alert alert-danger text-center w-100" role="alert">
+                {{messages.message}}
+              </div>
+            {{/if}}
+          {{/if}}
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-5 col-12 h-75 bg-danger">
+      aaaaaa
+    </div>
+  </div>
+</div>

@@ -1,35 +1,69 @@
 const Users = require("../models/Users");
+const cards = require("../public/js/cards");
 
 module.exports = class UserController {
-  static novoUser(req, res) {
-    res.render("cadastroUser");
+  static loginUser(req, res) {
+    res.render("users/login");
   }
 
-  static async novoUserSave(req, res) {
-    console.log("salva user");
-    const user = {
-      user: req.body.usuario,
-      name: req.body.nome_usuario,
-      cpf: req.body.cpf_usuario,
-      password: req.body.senha_usuario,
-    };
-    console.log(req.body);
-    await Users.create(user);
+  static logoutUser(req, res) {
+    req.session.destroy();
     res.redirect("/");
   }
 
-  static async listaUsers(req, res) {
-    const users = await Users.findAll({ raw: true });
-    console.log(users);
-    res.render("users", { users });
+  static async loginUserCheck(req, res) {
+    try {
+      const { user, password } = req.body;
+      const userActual = await Users.findOne({ where: { user: user } });
+      if (!userActual) {
+        req.flash("message", "Usuário ou senha incorretos");
+        res.render("users/login");
+        return;
+      }
+      if (userActual.password != password) {
+        req.flash("message", "Usuário ou senha incorretos");
+        res.render("users/login");
+        return;
+      }
+      req.session.userid = userActual.id;
+      req.session.user = userActual.name;
+      req.flash("message", "Login efetuado com sucesso");
+      req.session.save(() => {
+        res.render("dashboard");
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static novoUser(req, res) {
+    res.render("users/cadastroUser");
+  }
+
+  static async novoUserSave(req, res) {
+    try {
+      const user = {
+        user: req.body.usuario,
+        name: req.body.nome_usuario,
+        cpf: req.body.cpf_usuario,
+        password: req.body.senha_usuario,
+      };
+      await Users.create(user);
+      req.flash("message", "Usuário cadastrado com sucesso");
+      req.session.save(() => {
+        res.redirect("/");
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async editaUser(req, res) {
     const user = await Users.findOne({
-      where: { id: req.params.id },
+      where: { id: req.session.user.id },
       raw: true,
     });
-    res.render("editaUser", { user });
+    res.render("users/editaUser", { user });
   }
 
   static async editaUserSave(req, res) {

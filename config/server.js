@@ -1,20 +1,21 @@
 let express = require("express");
 let app = express();
-const session = require("express-session");
 const exphbs = require("express-handlebars");
 const User = require("../routes/userRouter");
 const Vendas = require("../routes/vendaRouter");
 const Clients = require("../routes/clientsRouter");
 const Products = require("../routes/productsRouter");
 const conn = require("../db/conn");
-const flash = require("connect-flash");
+const helpers = require("handlebars-helpers")();
+const flash = require("express-flash");
+const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 
 // CONFIGURANDO SESSÃO
 app.use(
   session({
     name: "session",
-    secret: "myCat",
+    secret: "johnsennaaaaaaaaaaaaaaaaaaaaa",
     resave: true,
     saveUninitialized: true,
     store: new FileStore({
@@ -23,27 +24,22 @@ app.use(
     }),
     cookie: {
       secure: false,
-      maxAge: 32000,
-      expires: 36000,
+      maxAge: 360000,
+      expires: new Date(Date.now() + 360000),
       httpOnly: true,
     },
   })
 );
 
+app.use(flash());
+
 // CONFIGURANDO SESSÃO PARA O RES
 app.use((req, res, next) => {
-  console.log(req.session.userid);
   if (req.session.userid) {
-    res.locals.user = req.session.userid;
+    console.log("session", req.session);
+    res.locals.session = req.session;
+    console.log("locals", res.locals)
   }
-  next();
-});
-
-app.use(flash());
-// MIDDLEWARE
-app.use((req, res, next) => {
-  res.locals.sucess_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
   next();
 });
 
@@ -53,6 +49,7 @@ app.set("view engine", "handlebars");
 
 // CONFIGURANDO O HANDLEBARS PARTIALS
 const hbs = exphbs.create({
+  helpers: helpers,
   partialsDir: ["views/partials"],
 });
 
