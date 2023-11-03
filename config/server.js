@@ -72,7 +72,11 @@ app.use("/vendas", Vendas);
 
 // CONFIGURANDO AS ROTAS
 app.get("/", (req, res) => {
-  res.render("home");
+  if (req.session.user) {
+    res.render("dashboard");
+  }else{
+    res.render("home");
+  }
 });
 
 // CONFIGURANDO A ROTA DE LOGIN

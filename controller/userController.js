@@ -29,7 +29,7 @@ module.exports = class UserController {
       req.session.user = userActual.name;
       req.flash("message", "Login efetuado com sucesso");
       req.session.save(() => {
-        res.render("dashboard");
+        res.redirect("/");
       });
     } catch (error) {
       console.log(error);
