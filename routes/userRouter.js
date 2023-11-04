@@ -11,17 +11,4 @@ router.post("/add", UserController.novoUserSave);
 router.get("/edit/:id", UserController.editaUser);
 router.post("/edit/:id", UserController.editaUserSave);
 
-//CONFIGURANDO LOGOUT
-router.get("/", (req, res) => {
-  try {
-    if (req.session.user) {
-      res.render("index", { cards });
-    } else {
-      res.redirect("/login");
-    }
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 module.exports = router;

@@ -1,53 +1,91 @@
 const Products = require("../models/Products");
+const Category = require("../models/Category");
+const Users = require("../models/Users");
 
 module.exports = class ProductController {
-  static novoProduto(req, res) {
-    res.render("produtos/cadastroProduto");
+  static async novoProduto(req, res) {
+    try {
+      const categorias = await Category.findAll({
+        raw: true,
+        where: { UserId: req.session.userid },
+      });
+      console.log(categorias);
+      res.render("produtos/cadastroProduto", { categorias });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async novoProdutoSave(req, res) {
-    const produto = {
-      cod: req.body.cod_produto,
-      name: req.body.nome_produto,
-      category: req.body.categoria_produto,
-      localization: req.body.localizacao_produto,
-      value: req.body.valor_produto,
-      stock: req.body.estoque_produto,
-      description: req.body.descricao_produto,
-    };
-    console.log(produto);
-    await Products.create(produto);
-    res.redirect("/produtos/");
+    try {
+      const produto = {
+        cod: req.body.cod_produto,
+        name: req.body.nome_produto,
+        category: req.body.categoria_produto,
+        value: req.body.valor_produto,
+        stock: req.body.estoque_produto,
+        description: req.body.descricao_produto,
+        UserId: req.session.userid,
+      };
+      await Products.create(produto);
+      res.redirect("/produtos/");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async listaEstoqueProdutos(req, res) {
-    const produtos = await Products.findAll({ raw: true });
-    console.log(produtos);
-    res.render("produtos/listaProdutosEstoque", { produtos });
+    try {
+      const produtos = await Products.findAll({
+        raw: true,
+        where: { UserId: req.session.userid },
+        include: [
+          {
+            model: Users,
+            required: true,
+          },
+        ],
+      });
+      console.log(produtos);
+      res.render("produtos/listaProdutosEstoque", { produtos });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async editaProduto(req, res) {
-    const produto = await Products.findByPk(req.params.id, { raw: true });
+    const produto = await Products.findOne({
+      raw: true,
+      where: { id: req.params.id, UserId: req.session.userid },
+    });
     res.render("produtos/editaProduto", { produto });
   }
 
   static async editaProdutoSave(req, res) {
-    const produto = {
-      cod: req.body.cod_produto,
-      name: req.body.nome_produto,
-      category: req.body.categoria_produto,
-      localization: req.body.localizacao_produto,
-      value: req.body.valor_produto,
-      stock: req.body.estoque_produto,
-      description: req.body.descricao_produto,
-    };
-    await Products.update(produto, { where: { id: req.params.id } })
-      .then(res.redirect("/produtos/"))
-      .catch((err) => console.log(err));
+    try {
+      const produto = {
+        cod: req.body.cod_produto,
+        name: req.body.nome_produto,
+        category: req.body.categoria_produto,
+        value: req.body.valor_produto,
+        stock: req.body.estoque_produto,
+        description: req.body.descricao_produto,
+        UserId: req.session.userid,
+      };
+      await Products.update(produto, {
+        where: { id: req.params.id, UserId: req.session.userid },
+      })
+        .then(res.redirect("/produtos/"))
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async apagaProdutoConfirma(req, res) {
-    await Products.destroy({ where: { id: req.params.id } })
+    await Products.destroy({
+      where: { id: req.params.id, UserId: req.session.userid },
+    })
       .then(res.redirect("/produtos/"))
       .catch((err) => console.log(err));
   }

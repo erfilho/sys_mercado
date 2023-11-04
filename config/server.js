@@ -5,6 +5,7 @@ const User = require("../routes/userRouter");
 const Vendas = require("../routes/vendaRouter");
 const Clients = require("../routes/clientsRouter");
 const Products = require("../routes/productsRouter");
+const Categories = require("../routes/categoryRouter");
 const conn = require("../db/conn");
 const helpers = require("handlebars-helpers")();
 const flash = require("express-flash");
@@ -67,6 +68,7 @@ app.use("/users", User);
 app.use("/clientes", Clients);
 app.use("/produtos", Products);
 app.use("/vendas", Vendas);
+app.use("/categorias", Categories);
 
 // CONFIGURANDO AS ROTAS
 app.get("/", (req, res) => {

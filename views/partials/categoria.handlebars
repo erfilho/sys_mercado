@@ -1,0 +1,8 @@
+<p class="col-5 my-2 text-center"> {{this.cod}} </p>
+<p class="col-5 my-2 text-center"> {{this.name}} </p>
+<div class="col-2 d-flex flex-row my-2 gap-2 align-content-end justify-content-center">
+  {{> buttonEdit route='/categorias/edit'}}
+  {{> buttonDelete}}
+</div>
+<hr class="my-0" />
+{{> confirmDelete route='/categorias/delete'}}

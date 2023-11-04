@@ -3,38 +3,52 @@
 <main
   class="container-fluid h-75 col-12 d-flex flex-sm-row px-0 gap-0 flex-column"
 >
-  <div class="col-1 m-0">
-    <p class="d-flex w-100 m-0">
-      <a class="w-100 btn btn-primary" data-bs-toggle="collapse" href="#menuClientes" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Clientes
+  <div class="col-1 m-2">
+    <p class="d-flex w-100 mb-1">
+      <a class="w-100 fs-5 d-flex flex-row justify-content-between px-2 align-items-center text-uppercase text-black text-decoration-none" data-bs-toggle="collapse" href="#menuClientes" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Clientes 
+        <i class="fs-4 bi bi-people"></i>
       </a>
     </p>
     <div class="collapse m-0" id="menuClientes">
-      <div class="card card-body">
-        <a href="/clientes/add" class="btn btn-primary">Cadastro de Cliente</a>
-        <a href="/clientes/" class="btn btn-primary">Clientes cadastrados</a>
+      <div class="w-100 d-flex flex-column justify-content-center gap-2 py-2">
+        <a href="/clientes/add" class="w-100 text-center text-black text-decoration-none border-bottom">Cadastro de Cliente</a>
+        <a href="/clientes/" class="w-100 text-center text-black text-decoration-none border-bottom mb-2">Clientes cadastrados</a>
       </div>
     </div>
-    <p class="d-flex w-100 m-0">
-      <a class="w-100 btn btn-primary" data-bs-toggle="collapse" href="#menuVendas" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Vendas
+    <p class="d-flex w-100 mb-1">
+      <a class="w-100 fs-5 d-flex flex-row justify-content-between px-2 align-items-center text-uppercase text-black text-decoration-none" data-bs-toggle="collapse" href="#menuVendas" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Vendas 
+        <i class="fs-4 bi bi-cart3"></i>
       </a>
     </p>
     <div class="collapse m-0" id="menuVendas">
-      <div class="card card-body">
-        <a href="/vendas/cadastro" class="btn btn-primary">Nova venda</a>
-        <a href="/vendas/historico" class="btn btn-primary">Histórico</a>
+      <div class="w-100 d-flex flex-column justify-content-center gap-2 py-2">
+        <a href="/vendas/cadastro" class="w-100 text-center text-black text-decoration-none border-bottom">Nova venda</a>
+        <a href="/vendas/historico" class="w-100 text-center text-black text-decoration-none border-bottom mb-2">Histórico</a>
       </div>
     </div>
-    <p class="d-flex w-100 m-0">
-      <a class="w-100 btn btn-primary" data-bs-toggle="collapse" href="#menuProdutos" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Produtos
+    <p class="d-flex w-100 mb-1">
+      <a class="w-100 fs-5 d-flex flex-row justify-content-between px-2 align-items-center text-uppercase text-black text-decoration-none" data-bs-toggle="collapse" href="#menuProdutos" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Produtos 
+        <i class="fs-4 bi bi-boxes"></i>
       </a>
     </p>
     <div class="collapse m-0" id="menuProdutos">
-      <div class="card card-body">
-        <a href="/produtos" class="btn btn-primary">Estoque de Produtos</a>
-        <a href="/produtos/add" class="btn btn-primary">Cadastro de Produtos</a>
+      <div class="w-100 d-flex flex-column justify-content-center gap-2 py-2">
+        <a href="/produtos" class="w-100 text-center text-black text-decoration-none border-bottom">Estoque de Produtos</a>
+        <a href="/produtos/add" class="w-100 text-center text-black text-decoration-none border-bottom mb-2">Cadastro de Produtos</a>
+      </div>
+    </div>
+    <p class="d-flex w-100 mb-1">
+      <a class="w-100 fs-5 d-flex flex-row justify-content-between px-2 align-items-center text-uppercase text-black text-decoration-none" data-bs-toggle="collapse" href="#menuCategorias" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Categorias 
+        <i class="fs-4 bi bi-tags"></i>
+      </a>
+    </p>
+    <div class="collapse m-0" id="menuCategorias">
+      <div class="w-100 d-flex flex-column justify-content-center gap-2 py-2">
+        <a href="/categorias" class="w-100 text-center text-black text-decoration-none border-bottom"> Cadastro Categorias </a>
       </div>
     </div>
   </div>
