@@ -46,8 +46,11 @@ module.exports = class ProductController {
           },
         ],
       });
-      console.log(produtos);
-      res.render("produtos/listaProdutosEstoque", { produtos });
+      const categoria = await Category.findAll({
+        raw: true,
+        where: { UserId: req.session.userid },
+      });
+      res.render("produtos/listaProdutosEstoque", { produtos, categorias });
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +61,11 @@ module.exports = class ProductController {
       raw: true,
       where: { id: req.params.id, UserId: req.session.userid },
     });
-    res.render("produtos/editaProduto", { produto });
+    const categorias = await Category.findAll({
+      raw: true,
+      where: { UserId: req.session.userid },
+    });
+    res.render("produtos/editaProduto", { produto, categorias });
   }
 
   static async editaProdutoSave(req, res) {

@@ -28,10 +28,9 @@
       <div class="col-6">
         <label for="categoria_produto"> Categoria </label>
         <select class="form-control" id="categoria_produto" name="categoria_produto">
-          <option value="{{produto.category}}"> {{produto.category}} </option>
-          <option> Limpeza </option>
-          <option> Alimentícios </option>
-          <option> Bebidas </option>
+            {{#each categorias}}
+              <option class="text-capitalize form-control" id="categoria_produto" value="{{this.cod}}">{{this.name}}</option>
+            {{/each}}
         </select>
       </div>
       <div
@@ -41,26 +40,7 @@
           Cadastrar categoria
         </button>
       </div>
-    </div>
-
-    <div class="row d-flex flex-row w-100">
-      <div class="col-6">
-        <label for="localizacao_produto"> Localização </label>
-        <select class="form-control" id="localizacao_produto" name="localizacao_produto">
-          <option value="{{produto.localization}}"> {{produto.localization}} </option>
-          <option> Prateleira 1 </option>
-          <option> Prateleira 2 </option>
-          <option> Prateleira 3 </option>
-        </select>
-      </div>
-      <div
-        class="col-auto d-flex flex-column align-self-end align-items-end h-100"
-      >
-        <button type="submit" class="btn align-bottom btn-primary">
-          Cadastrar localização
-        </button>
-      </div>
-    </div>
+    </div>  
 
     <div class="form-group w-25">
       <label for="cod_produto">Valor</label>
