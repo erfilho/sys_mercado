@@ -36,9 +36,7 @@ app.use(flash());
 // CONFIGURANDO SESSÃO PARA O RES
 app.use((req, res, next) => {
   if (req.session.userid) {
-    console.log("session", req.session);
     res.locals.session = req.session;
-    console.log("locals", res.locals)
   }
   next();
 });
@@ -74,7 +72,7 @@ app.use("/vendas", Vendas);
 app.get("/", (req, res) => {
   if (req.session.user) {
     res.render("dashboard");
-  }else{
+  } else {
     res.render("home");
   }
 });

@@ -4,7 +4,6 @@ const estados = require("../public/js/states");
 
 module.exports = class ClientController {
   static novoClient(req, res) {
-    console.log(estados);
     res.render("clientes/cadastroCliente", { estados });
   }
 
@@ -21,7 +20,7 @@ module.exports = class ClientController {
         additional_info: req.body.complemento,
         city: req.body.cidade,
         state: req.body.estado,
-        UserId: req.session.user.id,
+        UserId: req.session.userid,
       };
       await Clients.create(cliente);
       res.redirect("/clientes/");
@@ -34,7 +33,7 @@ module.exports = class ClientController {
     try {
       const clientes = await Clients.findAll({
         raw: true,
-        where: { UserId: req.session.user.id },
+        where: { UserId: req.session.userid },
         include: [
           {
             model: Users,
