@@ -13,8 +13,8 @@ const Sales = db.define("Sales", {
 });
 
 // Relacionamento venda-cliente
-Sales.hasOne(Clients);
 Clients.hasMany(Sales);
+Sales.belongsTo(Clients);
 // Relacionamento venda-usuário
 Sales.hasOne(Users);
 Users.hasMany(Sales);

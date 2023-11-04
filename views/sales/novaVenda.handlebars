@@ -1,4 +1,26 @@
 {{> navBar tela="Cadastro de vendas"}}
-  <table>
-    Teste rota
-  </table>
+  <form class="container-fluid w-50 d-flex flex-column gap-2" action="/vendas/add" method="post">
+    <p class="fs-4 text-center"> Nova venda </p>
+
+    <div class="form-group w-50">
+      <label for="clientes">Cliente:</label>
+      <select id="clientes" name="ClienteId" class="form-control" required>
+        {{#each clients}}
+          <option value="{{this.id}}"> {{this.name}} </option>
+        {{/each}}
+        
+      </select>
+    </div>
+
+    <div class="form-group w-50">
+      <label for="value">Valor da venda:</label>
+      <input type="number" class="form-control" id="value" name="value" placeholder="Valor da venda" required>
+    </div>
+
+    
+    </div>
+    <div class="d-flex flex-row justify-content-end gap-3">
+      <button type="submit" class="btn btn-success">Cadastrar</button>
+      <button type="reset" class="btn btn-secondary">Limpar</button>
+    </div>
+  </form>

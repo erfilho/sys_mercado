@@ -14,9 +14,9 @@
     class="d-flex flex-row flex-wrap rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1"
   >
         {{> headerTableVendas}}
-        {{#each vendas}}
+        {{#forOwn vendas}}
           {{> venda}}
-        {{/each}}
+        {{/forOwn}}
          </div>
       </div>
     </div>
