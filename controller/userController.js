@@ -25,10 +25,10 @@ module.exports = class UserController {
         res.render("users/login");
         return;
       }
-      req.session.userid = userActual.id;
-      req.session.user = userActual.name;
       req.flash("message", "Login efetuado com sucesso");
       req.session.save(() => {
+        req.session.userid = userActual.id;
+        req.session.user = userActual.name;
         res.render("dashboard");
       });
     } catch (error) {
