@@ -66,3 +66,26 @@ body {
   margin: 0px;
   
 }
+
+/* home */
+
+.mainScreen {
+  height: calc(100vh - 72px);
+}
+
+.divImage{
+  background-size: cover;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+.divMercham{
+  border-radius: 8px;
+  background-color: #ce93d8;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}

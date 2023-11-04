@@ -1,57 +1,95 @@
 {{> navBar home=true}}
-<div class="container-fluid w-100 px-0 py-0">
-  <div class="row h-100 w-100">
-    <div
-      class="container col-6 w-50 h-100 m-0"
-      style="background-image: url('assets/images/caixa1.jpg'); background-size: cover;"
-    >
-    </div>
-    <div
-      class="container col-6 w-50 h-100 text-center d-flex flex-column align-items-center justify-content-center align-content-center"
-    >
-      <p class="fs-2 align-self-center"> SysMercado </p>
-      <p class="fs-4"> A solução para o seu mercadinho </p>
-      <a class="fs-4 text-decoration-none text-black" href="#solucoes">
-        Venha conhecer as nossas soluções!
-      </a>
+
+<div class="mainScreen overflow-hidden row m-0 d-flex align-itens-center justify-content-between z-1">
+  <div
+    class="divImage m-0 col-12 col-xxl-12 d-flex align-items-start justify-content-end align-items-sm-center justify-content-sm-start justify-content-xl-center"
+    style="background-image: url(./assets/images/caixa.png);">
+    <div class="divMercham m-2 m-sm-5 m-xl-0 p-2 z-0 ">
+      <div class="text-light">
+        <h1>Sys Mercado</h1>
+        <h3>O melhor para seu mercado!</h3>
+        <a href="#solucoes" class="btn btn-light">Conheça nossas soluções </a>
+      </div>
     </div>
   </div>
 </div>
-<div class="container-fluid w-100 h-100 px-0 py-0">
-  <div class="row w-100 bg-body-tertiary" id="solucoes">
-    <p class="fs-1 text-center"> Nossas soluções! </p>
-  </div>
-  <div class="container-fluid w-100 h-100 d-flex flex-row flex-wrap px-0 py-0">
-    <div class="w-50 h-50">
-      <p class="fs-2 w-100 text-center"> Cadastro de Clientes </p>
-      <ul>
-        <li class="fs-5"> Cadastre todos os seus clientes </li>
-        <li class="fs-5"> Atribua uma venda para um cliente </li>
-        <li class="fs-5"> Veja as compras do seu cliente </li>
-      </ul>
-    </div>
-    <div class="w-50 h-50">
-      <p class="fs-2 w-100 text-center"> Controle de Estoque </p>
-      <ul>
-        <li class="fs-5"> Tenha acesso ao seu estoque </li>
-        <li class="fs-5"> Cadastre as categorias dos seus produtos </li>
-      </ul>
-    </div>
-    <div class="w-50 h-50">
-      <p class="fs-2 w-100 text-center"> Cadastro de Produtos </p>
-      <ul>
-        <li class="fs-5"> Cadastre todos os seus produtos </li>
-        <li class="fs-5"> Separe os produtos por categoria </li>
-        <li class="fs-5"> Atribua uma localização para o seu produto </li>
-      </ul>
-    </div>
-    <div class="w-50 h-50">
-      <p class="fs-2 w-100 text-center"> Controle de Vendas </p>
-      <ul>
-        <li class="fs-5"> Crie novas vendas </li>
-        <li class="fs-5"> Tenha acesso a todas as suas vendas </li>
-        <li> Veja o resumo das vendas por mês </li>
-      </ul>
+<div class="h-auto min-vh-100" id="solucoes">
+  <div class="bg-secondary d-flex min-vh-100 align-items-center flex-column justify-content-around p-3">
+    <h1 class="">Soluções embarcadas</h1>
+    <div class="w-100 row d-flex justify-content-center align-items-center gap-3">
+      {{> cardHome title="Cadastro de Clientes" body="Com o sistema de
+      Cadastro de Clientes, você pode gerenciar todas as informações dos seus clientes em um só lugar, de forma fácil e
+      rápida." link="cadastro_cliente"}}
+      {{> cardHome title="Gerenciamento de estoque" body="Gerencie seu estoque de forma fácil e eficiente com o nosso
+      sistema de Cadastro de Produtos. Cadastre, organize e localize seus produtos em um só lugar"
+      link="controle_estoque"}}
+      {{> cardHome title="Cadastro de Produtos" body="Agilize suas vendas com o nosso sistema de Realização de Vendas. Cadastre seus
+      produtos, gerencie seus estoques e venda com facilidade." link="cadastro_produtos"}}
     </div>
   </div>
 </div>
+<div class="h-auto min-vh-100 bg-light" id="cadastro_cliente">
+  <div class="d-flex min-vh-100 align-items-center flex-column justify-content-start gap-4 pt-5">
+    <h2>Cadastro de Clientes</h2>
+    <div>
+      {{> itemCheck text="Cadastre todos os seus clientes"}}
+      {{> itemCheck text="Atribua uma venda para um cliente"}}
+      {{> itemCheck text="Veja as compras do seu cliente" }}
+    </div>
+    <a href="/users/login" class="btn btn-primary ">Aproveitar agora!</a>
+  </div>
+
+</div>
+<div class="h-auto min-vh-100 bg-danger " id="controle_estoque">
+  <div class="d-flex min-vh-100 align-items-center flex-column justify-content-start gap-4 pt-5">
+    <h2>Gerenciamento de estoque</h2>
+    <div>
+      {{> itemCheck text="Tenha acesso ao seu estoque"}}
+      {{> itemCheck text="Cadastre as categorias dos seus produtos"}}
+    </div>
+    <a href="/users/login" class="btn btn-primary ">Aproveitar agora!</a>
+
+  </div>
+</div>
+<div class="h-auto min-vh-100 bg-info " id="cadastro_produtos">
+  <div class="d-flex min-vh-100 align-items-center flex-column justify-content-start gap-4 pt-5">
+    <h2>Cadastro de Produtos</h2>
+    <div>
+      {{> itemCheck text="Cadastre todos os seus produtos"}}
+      {{> itemCheck text="Separe os produtos por categoria"}}
+      {{> itemCheck text="Atribua uma localização para o seu produto"}}
+    </div>
+    <a href="/users/login" class="btn btn-primary ">Aproveitar agora!</a>
+
+  </div>
+</div>
+<div class="h-auto min-vh-100 bg-danger" id="panos">
+  <div class="d-flex min-vh-100 align-items-center flex-column justify-content-start gap-4 pt-5">
+    <h2>Planos</h2>
+    <div class="row w-100 d-flex justify-content-center gap-4">
+      {{> cardPlanos title="Plano Básico" body="O plano básico do Sys Mercado oferece recursos essenciais para gerenciar
+      clientes e produtos, além de controle de estoque. Com valor acessível, é ideal para pequenos negócios que buscam
+      otimizar suas operações." valor= "250,00" link="/users/login"}}
+      {{> cardPlanos title="Plano avançado" body="Com o Plano Avançado do Sys Mercado, tenha acesso a recursos
+      exclusivos para gerenciar seu negócio além de suporte diferenciado. Com custo baixo, você pode otimizar suas
+      operações e aumentar sua produtividade. Ideal para negócios de médio porte." valor= "500,00"
+      link="/users/login"}}
+      {{> cardPlanos title="Plano Expert" body="Com o Sys Mercado Expert, gerencie seu negócio com facilidade e
+      eficiência. Cadastre clientes, controle estoque e venda com agilidade. Suporte dedicado 24 horas por dia 7 dias
+      por semana, servidores dedicados e treinamento incluso. Ideal para negócios de grande porte e franquias." valor=
+      "1.300,00" link="/users/login"}}
+    </div>
+  </div>
+</div>
+<div class="h-auto min-vh-100 bg-success" id="sobre">
+  <div class="d-flex min-vh-100 align-items-center flex-column justify-content-start text-center gap-5 pt-5">
+    <h1>O Futuro do Varejo Começa com a Sys Mercado.</h1>
+    <div class="row w-100 d-flex justify-content-center align-items-center text-center gap-4">
+      <div class="col-8 bg-dark-subtle p-3 rounded">
+        <h4>Com mais de 2 semanas de experiência no mercado, a Sys Mercado é uma empresa de tecnologia que oferece
+          soluções completas para o varejo. Nossos sistemas são desenvolvidos com o que há de mais moderno em
+          tecnologia, para que você possa gerenciar seu negócio de forma simples, eficiente e segura.</h4>
+      </div>
+    </div>
+    <a href="/users/login" class="btn btn-primary ">Aproveitar agora!</a>
+  </div>
