@@ -27,6 +27,7 @@ module.exports = class UserController {
       }
       req.flash("message", "Login efetuado com sucesso");
       req.session.save(() => {
+        res.redirect("/");
         req.session.userid = userActual.id;
         req.session.user = userActual.name;
         res.render("dashboard");
