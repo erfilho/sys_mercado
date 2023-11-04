@@ -1,0 +1,30 @@
+{{> navBar tela="Histórico de vendas"}}
+  <div
+    class="container-fluid w-100 d-flex flex-column justify-content-center align-items-center align-content-center"
+  >
+    <div class="container-fluid w-75 d-flex flex-column  my-2">
+      <div class="w-100 text-center">
+        <h1 class="fs-4"> Histórico de vendas </h1>
+      </div>
+      <div class="container-fluid py-2">
+        <a class="btn btn-primary" href="/vendas/add"> Nova venda </a>
+      </div>
+      <div class="d-flex flex-column gap-2">
+         <div
+    class="d-flex flex-row flex-wrap rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1"
+  >
+        {{> headerTableVendas}}
+        {{#each vendas}}
+          {{> venda}}
+        {{/each}}
+         </div>
+      </div>
+    </div>
+  </div>
+<!-- Script para abrir e fechar a tela de confirmação -->
+<script>
+  function openConfirmation(id) {
+  document.getElementById(`confirmation${id}`).style.display = "flex"; }
+  function closeConfirmation(id) {
+  document.getElementById(`confirmation${id}`).style.display = "none"; }
+</script>
