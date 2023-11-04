@@ -8,7 +8,7 @@ router.post("/login", UserController.loginUserCheck);
 router.get("/logout", UserController.logoutUser);
 router.get("/add", UserController.novoUser);
 router.post("/add", UserController.novoUserSave);
-router.get("/edit/:id", UserController.editaUser);
-router.post("/edit/:id", UserController.editaUserSave);
+router.get("/edit/", UserController.editaUser);
+router.post("/edit/", UserController.editaUserSave);
 
 module.exports = router;

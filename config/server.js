@@ -73,6 +73,7 @@ app.use("/categorias", Categories);
 // CONFIGURANDO AS ROTAS
 app.get("/", (req, res) => {
   if (req.session.user) {
+    console.log(req.session.user)
     res.render("dashboard");
   } else {
     res.render("home");
