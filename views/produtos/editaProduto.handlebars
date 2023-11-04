@@ -36,7 +36,12 @@
       <div
         class="col-auto d-flex flex-column align-self-end align-items-end h-100"
       >
-        <button type="submit" class="btn align-bottom btn-primary">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modalCategory"
+        >
           Cadastrar categoria
         </button>
       </div>
@@ -69,3 +74,4 @@
     </div>
     </form>
   </div>
+{{> cadastroCategoria}}

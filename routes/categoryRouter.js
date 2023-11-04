@@ -8,5 +8,6 @@ router.get("/add", CategoryController.novaCategoria);
 router.post("/add", CategoryController.novaCategoriaSave);
 router.get("/edit/:id", CategoryController.editaCategoria);
 router.post("/edit/:id", CategoryController.editaCategoriaSave);
+router.post("/delete/:id", CategoryController.apagaCategoriaConfirma);
 
 module.exports = router;

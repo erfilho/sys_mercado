@@ -46,7 +46,7 @@ module.exports = class ProductController {
           },
         ],
       });
-      const categoria = await Category.findAll({
+      const categorias = await Category.findAll({
         raw: true,
         where: { UserId: req.session.userid },
       });
@@ -95,5 +95,20 @@ module.exports = class ProductController {
     })
       .then(res.redirect("/produtos/"))
       .catch((err) => console.log(err));
+  }
+
+  static async countProducts(req, res) {
+    try {
+      await Products.count({
+        where: { UserId: req.session.userid },
+      })
+        .then((count) => {
+          res.send({ count });
+          console.log(count);
+        })
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
