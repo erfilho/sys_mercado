@@ -1,10 +1,9 @@
-const Clients = require("../models/clients");
+const Clients = require("../models/Clients");
 const Users = require("../models/Users");
 const estados = require("../public/js/states");
 
 module.exports = class ClientController {
   static novoClient(req, res) {
-    console.log(estados);
     res.render("clientes/cadastroCliente", { estados });
   }
 
@@ -21,7 +20,7 @@ module.exports = class ClientController {
         additional_info: req.body.complemento,
         city: req.body.cidade,
         state: req.body.estado,
-        UserId: req.session.user.id,
+        UserId: req.session.userid,
       };
       await Clients.create(cliente);
       res.redirect("/clientes/");
@@ -34,7 +33,7 @@ module.exports = class ClientController {
     try {
       const clientes = await Clients.findAll({
         raw: true,
-        where: { UserId: req.session.user.id },
+        where: { UserId: req.session.userid },
         include: [
           {
             model: Users,
@@ -51,11 +50,8 @@ module.exports = class ClientController {
   static async editaCliente(req, res) {
     try {
       const cliente = await Clients.findOne({
-        where: { id: req.params.id },
+        where: { id: req.params.id, UserId: req.session.userid },
         raw: true,
-      });
-      const users = await Users.findOne({
-        where: { id: req.session.user.id },
       });
       res.render("clientes/editaCliente", { cliente, estados });
     } catch (error) {
@@ -76,7 +72,9 @@ module.exports = class ClientController {
         state: req.body.estado,
         UserID: req.body.UserID,
       };
-      await Clients.update(cliente, { where: { id: req.params.id } })
+      await Clients.update(cliente, {
+        where: { id: req.params.id, UserId: req.session.userid },
+      })
         .then(res.redirect("/clientes/"))
         .catch((err) => console.log(err));
     } catch (error) {
@@ -85,7 +83,9 @@ module.exports = class ClientController {
   }
 
   static async apagaClienteConfirma(req, res) {
-    await Clients.destroy({ where: { id: req.params.id } })
+    await Clients.destroy({
+      where: { id: req.params.id, UserId: req.session.userid },
+    })
       .then(res.redirect("/clientes/"))
       .catch((err) => console.log(err));
   }

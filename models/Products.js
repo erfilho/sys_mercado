@@ -1,5 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db/conn");
+const ProductController = require("../controller/productController");
+const Users = require("./Users");
+const Category = require("./Category");
 
 const Products = db.define("Products", {
   cod: {
@@ -13,11 +16,7 @@ const Products = db.define("Products", {
   },
   category: {
     type: DataTypes.STRING,
-    allowNull: false,
-  },
-  localization: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   value: {
     type: DataTypes.FLOAT,
@@ -29,8 +28,12 @@ const Products = db.define("Products", {
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 });
+
+Products.hasOne(Category);
+Products.belongsTo(Users);
+Users.hasMany(Products);
 
 module.exports = Products;

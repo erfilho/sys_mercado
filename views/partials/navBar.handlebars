@@ -29,7 +29,11 @@
     </div>
     <div class="d-none d-lg-block mt-3 gap-5 d-lg-flex me-5">
       <p class="text-white ">{{tela}}</p>
-      <p class="text-white">Olá, {{session.user}}</p>
+      <p class="text-white">Olá, 
+        <a href="/users/edit/" class="text-white text-decoration-none">
+          {{session.user}}
+        </a>
+      </p>
     </div>
     <div class="d-none d-lg-block">
       <a href="/users/logout"

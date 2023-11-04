@@ -59,11 +59,16 @@ module.exports = class UserController {
   }
 
   static async editaUser(req, res) {
-    const user = await Users.findOne({
-      where: { id: req.session.user.id },
-      raw: true,
-    });
-    res.render("users/editaUser", { user });
+    try {
+      const user = await Users.findOne({
+        where: { id: req.session.userid },
+        raw: true,
+      });
+      console.log(user);
+      res.render("users/editaUser", { user });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   static async editaUserSave(req, res) {
@@ -73,8 +78,8 @@ module.exports = class UserController {
       cpf: req.body.cpf_usuario,
       password: req.body.senha_usuario,
     };
-    await (await Users.update(user, { where: { id: req.params.id } }))
-      .then(res.redirect("/users/"))
+    await Users.update(user, { where: { id: req.session.userid } })
+      .then(res.redirect("/"))
       .catch((err) => console.log(err));
   }
 };
