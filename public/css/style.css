@@ -115,3 +115,26 @@ background-color: rgb(234, 208, 229);;
   flex-direction: row;
   width: 50%;
 }
+
+/* tabela */
+.dataTables_paginate  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dataTables_filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.dataTables_length{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.dataTables_length select{
+  width: 70px;
+}
