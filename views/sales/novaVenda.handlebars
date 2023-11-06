@@ -8,45 +8,15 @@
   <div class="col-12 bg-danger col-md-7">
     <div class="row">
       <h2 class="text-center">Carrinho</h2>
+      {{> tabelaCarrinho}}
       <div class="col-12">
-        <table class="table table-striped" id="carrinho">
-          <thead>
-            <tr>
-              <th>Produto</th>
-              <th>Quantidade</th>
-              <th>Valor</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-
-          </tbody>
-        </table>
+        <h3 class="text-center">Total: <span id="subtotalValue">0.00</span></h3>
       </div>
       <div class="col-12">
-        <h3 class="text-center">Total: <span id="subtotalValue">X</span></h3>
-      </div>
-      <div class="col-12">
-        <button id="btnFinalizar" class="btn btn-success" onclick="finalizarVenda()">Finalizar Venda</button>
+        <button id="btnFinalizar" class="btn btn-success disabled" onclick="finalizarVenda()">Finalizar Venda</button>
       </div>
     </div>
   </div>
 </div>
-<script>
-  // gerencia a tebela de carrinho
-  $(document).ready(function () {
-    $('#carrinho').DataTable({
-      paging: false,
-      scrollCollapse: true,
-      scrollY: '200px',
-      responsive: true,
-      language: {
-        "zeroRecords": "",
-        "info": "",
-        "infoEmpty": "",
-        "infoFiltered": "",
-        "search": "Buscar:"
-      },
-    });
-  });
-</script>
+
+<script src="/js/venda.js"></script>

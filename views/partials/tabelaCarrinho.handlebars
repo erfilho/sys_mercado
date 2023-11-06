@@ -1,0 +1,43 @@
+<script src="/js/addProd.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<table class="table table-striped" id="carrinho">
+  <thead>
+    <tr>
+      <th>Produto</th>
+      <th>Quantidade</th>
+      <th>Valor</th>
+      <th>Subtotal</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+
+  </tbody>
+</table>
+
+<script>
+  // gerencia a tebela de carrinho
+  $(document).ready(function () {
+    $('#carrinho').DataTable({
+      paging: false,
+      scrollCollapse: true,
+      scrollY: '200px',
+      responsive: true,
+      language: {
+        "zeroRecords": "Nenhum produto aqui",
+        "info": "",
+        "infoEmpty": "",
+        "infoFiltered": "",
+        "search": "Buscar:"
+      },
+      "columnDefs": [{
+        "targets": 4,
+        "orderable": false,
+        "searchable": false,
+      }]
+    });
+  });
+</script>

@@ -3,14 +3,13 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-<div class="dataTablesContainer ">
   <table id="data" class="table table-striped">
-    <thead class="">
+    <thead>
       <tr>
-        <th class="">Nome produto</th>
+        <th>Nome produto</th>
         <th>Estoque</th>
         <th>Valor R$:</th>
-        <th>Quantidade</th>
+        <th id="quantidade">Quantidade</th>
       </tr>
     </thead>
     <tbody>
@@ -29,8 +28,7 @@
       {{/each}}
     </tbody>
   </table>
-</div>
-<script src="/js/addProd.js"></script>
+
 <script>
   $(document).ready(function () {
     $('#data').DataTable({
@@ -64,44 +62,4 @@
     });
   });
 
-  // add produto no carrinho
-  function addProduto(id) {
-    const quantidade = parseInt($(`#input${id}`).val());
-    const max = parseInt($(`#input${id}`).attr("max"));
-    console.log("teste");
-    if (quantidade > max) {
-      alert(`Quantidade ${quantidade} maior que o estoque ${max}`);
-      return;
-    } else {
-      console.log("teste 2");
-      const nome = $(`#name${id}`).text();
-      const valor = parseFloat($(`#valor${id}`).text());
-      const subtotal = quantidade * valor;
-      const template = `
-      <tr id="produto${id}">
-        <td>${nome}</td>
-        <td>${quantidade}</td>
-        <td>${valor}</td>
-        <td>${subtotal}</td>
-      </tr>
-      `
-      $("#carrinho").DataTable().row.add($(template)).draw(false);
-      let total = 0;
-
-      $("#carrinho tr:gt(1)").each(function () {
-        const quantidade = parseInt($(this).find("td:eq(1)").text());
-        const valor = parseFloat($(this).find("td:eq(2)").text());
-        const subtotal = parseFloat(quantidade * valor);
-        total = (total + subtotal);
-      });
-
-      if (total === null || isNaN(total) || total === undefined) {
-        $("#btnFinalizar").addClass("disabled");
-      } else {
-        $("#btnFinalizar").removeClass("disabled");
-        $("#subtotalValue").text(total.toFixed(2));
-      }
-    }
-    
-  }
 </script>
