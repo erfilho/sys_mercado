@@ -59,8 +59,8 @@
       <div class="form-group w-25">
         <label for="estado"> Estado </label>
         <select class="form-control" id="estado" name="estado" >
-          {{#each estados}}
-            {{> estadoOption estado=this cliente=cliente.state}}
+          {{#each estados}}            
+            {{> estadoOption uf_cliente=../cliente.state}}
           {{/each}}
         </select>
       </div>
