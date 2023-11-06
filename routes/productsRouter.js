@@ -8,6 +8,7 @@ router.post("/add", ProductController.novoProdutoSave);
 router.get("/edit/:id", ProductController.editaProduto);
 router.post("/edit/:id", ProductController.editaProdutoSave);
 router.post("/delete/:id", ProductController.apagaProdutoConfirma);
+router.get("/search", ProductController.searchProduct);
 router.get("/cnt_produtos", ProductController.countProducts);
 
 module.exports = router;

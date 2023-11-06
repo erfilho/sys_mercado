@@ -50,6 +50,7 @@ module.exports = class ProductController {
       const categorias = await Category.findAll({
         raw: true,
         where: { UserId: req.session.userid },
+        order: [["name", "ASC"]],
       });
       res.render("produtos/listaProdutosEstoque", { produtos, categorias });
     } catch (error) {
@@ -107,6 +108,31 @@ module.exports = class ProductController {
         .then((count) => {
           res.send({ count });
           console.log(count);
+        })
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  static async searchProduct(req, res) {
+    try {
+      await Products.findAll({
+        raw: true,
+        where: {
+          UserId: req.session.userid,
+          category: categoria,
+          name: req.query.prod_search,
+        },
+        include: [
+          {
+            model: Users,
+            required: true,
+          },
+        ],
+      })
+        .then((produtos) => {
+          res.render("produtos/listaProdutosEstoque", { produtos, categorias });
         })
         .catch((err) => console.log(err));
     } catch (error) {
