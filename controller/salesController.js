@@ -1,6 +1,7 @@
 const Users = require("../models/Users");
 const Sales = require("../models/Sales");
 const Clients = require("../models/Clients");
+const Products = require("../models/Products");
 
 module.exports = class SalesController {
   static async novaVenda(req, res) {
@@ -16,8 +17,12 @@ module.exports = class SalesController {
           },
         ],
       });
-      console.log(clients);
-      res.render("sales/novaVenda", { clients });
+      const products = await Products.findAll({
+        raw: true,
+        order: [["name", "ASC"]],
+      });
+
+      res.render("sales/novaVenda", { clients, products });
     } catch (error) {
       console.log(error);
     }

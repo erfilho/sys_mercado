@@ -1,0 +1,65 @@
+<script src="/js/addProd.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+{{!--
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js --}}
+
+<table id="data" class="table table-responsive">
+  <thead class="">
+    <tr>
+      <th class="">Nome produto</th>
+      <th>Estoque</th>
+      <th>Valor R$:</th>
+      <th>Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.stock}}</td>
+      <td>{{this.value}}</td>
+      <td>
+        <div class="d-flex flex-row row mx-auto input-group">
+          <input class=" col-5" type="number" name="" id="input{{this.id}}" value="1" id="inputProd">
+          <button class="col-5 btn btn-success" value="1" max="{{this.stock}}" min="1"
+            onclick="addProduto({{this.id}})">Add</button>
+
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+<script>
+  $(document).ready(function () {
+    $('#data').DataTable({
+      "pagingType": "full_numbers",
+      "lengthMenu": [
+        [5, 10, 25, 50, -1],
+        [5, 10, 25, 50, "All"]
+      ],
+      responsive: true,
+      language: {
+        search: "_INPUT_",
+        searchPlaceholder: "Buscar Produtos",
+        "lengthMenu": "Mostrar _MENU_ produtos por página",
+        "zeroRecords": "Nenhum produto encontrado",
+        "info": "",
+        "infoEmpty": "",
+        "infoFiltered": "",
+        "paginate": {
+          "first": "<<",
+          "previous": "<",
+          "next": ">",
+          "last": ">>"
+        }
+      }
+    });
+  });
+</script>

@@ -1,11 +1,5 @@
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="modalCategory"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="modalCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <form action="/categorias/add" method="post">
@@ -13,31 +7,14 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">
             Cadastro de categorias
           </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body d-flex flex-column gap-1">
-          <input
-            class="form-control"
-            placeholder="Código da categoria"
-            name="cod_categoria"
-          />
-          <input
-            class="form-control"
-            placeholder="Nome da categoria"
-            name="nome_categoria"
-          />
+          <input class="form-control" placeholder="Código da categoria" name="cod_categoria" />
+          <input class="form-control" placeholder="Nome da categoria" name="nome_categoria" />
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >Cancelar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-primary"> Cadastrar </button>
         </div>
       </form>
