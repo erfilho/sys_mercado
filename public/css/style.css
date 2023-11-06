@@ -26,6 +26,18 @@ body {
   background-color: #9c27b0;
 }
 
+#background {
+  background-color: rgb(231, 173, 223);
+}
+
+#background-1 {
+background-color: rgb(234, 208, 229);;
+}
+
+#background-2 {
+  background-color: #c67ed2;
+}
+
 /* tabelas*/
 
 .tabela_vendas .div-table {
