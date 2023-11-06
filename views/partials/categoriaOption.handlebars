@@ -1,0 +1,5 @@
+{{#compare this.cod "==" prod_categoria}}
+  <option value="{{this.cod}}" selected> {{this.name}} </option>
+{{else}}
+  <option value="{{this.cod}}"> {{this.name}} </option>
+{{/compare}}

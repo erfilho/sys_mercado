@@ -8,6 +8,7 @@ module.exports = class ProductController {
       const categorias = await Category.findAll({
         raw: true,
         where: { UserId: req.session.userid },
+        order: [["name", "ASC"]],
       });
       console.log(categorias);
       res.render("produtos/cadastroProduto", { categorias });
@@ -64,6 +65,7 @@ module.exports = class ProductController {
     const categorias = await Category.findAll({
       raw: true,
       where: { UserId: req.session.userid },
+      order: [["name", "ASC"]],
     });
     res.render("produtos/editaProduto", { produto, categorias });
   }

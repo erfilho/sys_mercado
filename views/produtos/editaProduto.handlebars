@@ -29,7 +29,7 @@
         <label for="categoria_produto"> Categoria </label>
         <select class="form-control" id="categoria_produto" name="categoria_produto">
             {{#each categorias}}
-              <option class="text-capitalize form-control" id="categoria_produto" value="{{this.cod}}">{{this.name}}</option>
+              {{> categoriaOption prod_categoria=../produto.category}}
             {{/each}}
         </select>
       </div>
