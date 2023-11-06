@@ -88,19 +88,15 @@
       $("#carrinho").DataTable().row.add($(template)).draw(false);
       let total = 0;
 
-      console.log("total 77777", total)
       $("#carrinho tr:gt(1)").each(function () {
-        console.log("total 8888")
         const quantidade = parseInt($(this).find("td:eq(1)").text());
         const valor = parseFloat($(this).find("td:eq(2)").text());
         const subtotal = parseFloat(quantidade * valor);
         total = (total + subtotal);
       });
-      console.log("total 5555", total)
 
       if (total === null || isNaN(total) || total === undefined) {
         $("#btnFinalizar").addClass("disabled");
-        $("#subtotalValue").text("0.00");
       } else {
         $("#btnFinalizar").removeClass("disabled");
         $("#subtotalValue").text(total.toFixed(2));

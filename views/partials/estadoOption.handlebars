@@ -1,4 +1,4 @@
-{{#compare estado.uf "==" cliente}}
+{{#compare ../estado.uf "==" cliente.state}}
   <option value="{{estado.uf}}" selected> {{estado.estado}} </option>
 {{else}}
   <option value="{{estado.uf}}"> {{estado.estado}} </option>
