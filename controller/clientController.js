@@ -95,10 +95,31 @@ module.exports = class ClientController {
     try {
       const { search_cli } = req.body;
       let clientes = "";
-      if (search_cli == "") {
+      if (isNaN(search_cli) && search_cli != "") {
         clientes = await Clients.findAll({
           raw: true,
-          where: { UserId: req.session.userid },
+          where: {
+            UserId: req.session.userid,
+            name: {
+              [Op.like]: `%${search_cli}%`,
+            },
+          },
+          include: [
+            {
+              model: Users,
+              required: true,
+            },
+          ],
+        });
+      } else if (!isNaN(search_cli) && search_cli != "") {
+        clientes = await Clients.findAll({
+          raw: true,
+          where: {
+            UserId: req.session.userid,
+            cpf: {
+              [Op.like]: `%${search_cli}%`,
+            },
+          },
           include: [
             {
               model: Users,
@@ -111,9 +132,6 @@ module.exports = class ClientController {
           raw: true,
           where: {
             UserId: req.session.userid,
-            name: {
-              [Op.like]: `%${search_cli}%`,
-            },
           },
           include: [
             {
