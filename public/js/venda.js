@@ -6,7 +6,6 @@ function calculaValor() {
     const valor = parseFloat($(this).find("td:eq(2)").text());
     const subtotal = parseFloat(quantidade * valor);
     total = (total + subtotal);
-    console.log(`quantidade ${quantidade} valor ${valor} subtotal ${subtotal}`);
   });
   if (isNaN(total) || total <= 0) {
     $("#btnFinalizar").addClass("disabled");
@@ -44,7 +43,7 @@ function addProduto(id) {
     const valor = parseFloat($(`#valor${id}`).text());
     const subtotal = quantidade * valor;
     const template = `
-    <tr id="produto${id}">
+    <tr id="produto${id}" data-id="${id}">
       <td>${nome}</td>
       <td>${quantidade}</td>
       <td>${valor}</td>
@@ -55,6 +54,45 @@ function addProduto(id) {
     $("#carrinho").DataTable().row.add($(template)).draw(false);
     calculaValor();
     // atualizarInput();
-  }
+  };
 }
 
+// finaliza venda
+function finalizarVenda() {
+  console.log("teste434343434");
+  let produtos = [];
+  let total = 0;
+  $("#carrinho tr:gt(0)").each(function () {
+    const quantidade = parseInt($(this).find("td:eq(1)").text());
+    const valor = parseFloat($(this).find("td:eq(2)").text());
+    const subtotal = parseFloat(quantidade * valor);
+    let id = $(this).data('id')
+    total = (total + subtotal);
+    produtos.push({
+      id: id,
+      quantidade: quantidade,
+      valor: valor,
+      subtotal: subtotal,
+    });
+  });
+  produtos.push(total.toFixed(2))
+  postvenda(produtos);
+}
+
+function postvenda(produtos) {
+  console.log("testeerererere", produtos);
+  fetch("/vendas/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(produtos),
+  })
+    .then((response) => {
+      console.log("Success:", response.url);
+      window.location.href = response.url;
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}

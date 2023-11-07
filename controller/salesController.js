@@ -2,6 +2,7 @@ const Users = require("../models/Users");
 const Sales = require("../models/Sales");
 const Clients = require("../models/Clients");
 const Products = require("../models/Products");
+const { json } = require("body-parser");
 
 module.exports = class SalesController {
   static async novaVenda(req, res) {
@@ -29,18 +30,42 @@ module.exports = class SalesController {
   }
 
   static async novaVendaSave(req, res) {
+    let dados = req.body;
+    let IDs = [];
+    let valorTotal = parseFloat(dados.pop());
+    let clienteId = 1;
+    let venda;
+    for (let i = 0; i < dados.length; i++) {
+      IDs.push(dados[i].id);
+    }
+
     try {
-      const venda = {
-        value: req.body.value,
-        ClientId: req.body.ClienteId,
+      let produtoVenda = await Products.findAll({
+        where: {
+          id: IDs
+        }
+      });
+      produtoVenda = produtoVenda.map(item => {
+        return {
+          ...item.dataValues,
+          quantidadeVenda: dados.find(dado => dado.id == item.id).quantidade,
+          subtotal: dados.find(dado => dado.id == item.id).subtotal
+        }
+      });
+
+      venda = {
+        value: valorTotal,
+        products: produtoVenda,
+        ClientId: clienteId,
         UserId: req.session.userid,
       };
-      console.log(venda);
+      venda.products = JSON.parse(JSON.stringify(venda.products));
       await Sales.create(venda);
       res.redirect("/vendas/");
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error('Erro ao cadastrar venda:', error);
     }
+    
   }
 
   static async listaVendas(req, res) {
@@ -58,7 +83,7 @@ module.exports = class SalesController {
         raw: true,
         where: { UserId: req.session.userid },
       });
-      console.log("VENDA", JSON.stringify(vendas));
+      console.log("LISTA VENDAS --------------------------------------", JSON.stringify(vendas));
       res.render("sales/listaVendas", {
         vendas,
         clientes,

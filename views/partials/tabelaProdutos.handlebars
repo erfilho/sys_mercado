@@ -1,4 +1,3 @@
-<script src="/js/addProd.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
@@ -14,7 +13,7 @@
     </thead>
     <tbody>
       {{#each this}}
-      <tr>
+      <tr data-id="{{this.id}}">
         <td id="name{{this.id}}">{{this.name}}</td>
         <td id="estoque{{this.id}}">{{this.stock}}</td>
         <td id="valor{{this.id}}">{{this.value}}</td>
