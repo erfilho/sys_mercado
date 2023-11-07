@@ -12,8 +12,18 @@
       <div class="col-12">
         <h3 class="text-center">Total: <span id="subtotalValue">0.00</span></h3>
       </div>
-      <div class="col-12">
-        <button id="btnFinalizar" class="btn btn-success disabled" onclick="finalizarVenda()">Finalizar Venda</button>
+      <div class="col-12 row">
+        <div class="col-5">
+          <button id="btnFinalizar" class="btn btn-success disabled" onclick="finalizarVenda()">Finalizar Venda</button>
+        </div>
+        <div class="col-7 d-flex">
+          <h5>Cliente:</h5>
+          <select class="form-control " id="cliente" name="clientes">
+            {{#each clients}}
+            <option value="{{this.id}}"> {{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
       </div>
     </div>
   </div>

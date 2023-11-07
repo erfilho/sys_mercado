@@ -1,13 +1,13 @@
 // calcular valor total do carrinho
 function calculaValor() {
-  let total = null;
+  let total = 0;
   $("#carrinho tr:gt(0)").each(function () {
     const quantidade = parseInt($(this).find("td:eq(1)").text());
     const valor = parseFloat($(this).find("td:eq(2)").text());
     const subtotal = parseFloat(quantidade * valor);
     total = (total + subtotal);
   });
-  if (isNaN(total) || total <= 0) {
+  if ((isNaN(total) || total <= 0)) {
     $("#btnFinalizar").addClass("disabled");
     $("#subtotalValue").text("0.00");
   } else {
@@ -18,23 +18,32 @@ function calculaValor() {
 
 // remover produto do carrinho
 function removerProduto(id) {
-  console.log("Id produto", id);
   $("#carrinho").DataTable().row(`#produto${id}`).remove().draw(false);
   calculaValor();
 }
-
+$(document).ready(function () {
+  $("#cliente").on("change", function () {
+    var valorSelecionado = $(this).val();
+    if (valorSelecionado != "") {
+      calculaValor();
+    } else {
+      $("#btnFinalizar").addClass("disabled");
+    }
+  });
+});
 // atualizar input produtos
-// function atualizarInput() {
-//   $("#quantidade").each(function () {
-//     $("input").val(1);
-//   });
-// }
+function atualizarInput() {
+  $(".quantidadeInput input").each(function () {
+    $(this).val(1);
+  });
+}
+
+
 
 // add produto no carrinho
 function addProduto(id) {
   const quantidade = parseInt($(`#input${id}`).val());
   const max = parseInt($(`#input${id}`).attr("max"));
-  console.log("teste");
   if (quantidade > max) {
     alert(`Quantidade ${quantidade} maior que o estoque ${max}`);
     return;
@@ -53,13 +62,14 @@ function addProduto(id) {
     `
     $("#carrinho").DataTable().row.add($(template)).draw(false);
     calculaValor();
-    // atualizarInput();
+    atualizarInput();
+
+
   };
 }
 
 // finaliza venda
 function finalizarVenda() {
-  console.log("teste434343434");
   let produtos = [];
   let total = 0;
   $("#carrinho tr:gt(0)").each(function () {
@@ -76,11 +86,11 @@ function finalizarVenda() {
     });
   });
   produtos.push(total.toFixed(2))
+  produtos.push($("#cliente").val())
   postvenda(produtos);
 }
 
 function postvenda(produtos) {
-  console.log("testeerererere", produtos);
   fetch("/vendas/add", {
     method: "POST",
     headers: {

@@ -2,7 +2,6 @@ const Users = require("../models/Users");
 const Sales = require("../models/Sales");
 const Clients = require("../models/Clients");
 const Products = require("../models/Products");
-const { json } = require("body-parser");
 
 module.exports = class SalesController {
   static async novaVenda(req, res) {
@@ -32,8 +31,8 @@ module.exports = class SalesController {
   static async novaVendaSave(req, res) {
     let dados = req.body;
     let IDs = [];
+    let clienteId = parseInt(dados.pop());;
     let valorTotal = parseFloat(dados.pop());
-    let clienteId = 1;
     let venda;
     for (let i = 0; i < dados.length; i++) {
       IDs.push(dados[i].id);

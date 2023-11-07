@@ -18,10 +18,11 @@
         <td id="estoque{{this.id}}">{{this.stock}}</td>
         <td id="valor{{this.id}}">{{this.value}}</td>
         <td>
-          <div class="d-flex flex-row row mx-auto input-group">
-            <input class=" col-5" type="number" name="" id="input{{this.id}}" value="1" id="inputProd">
+          <div class="d-flex flex-row row mx-auto input-group quantidadeInput">
+            <input class=" col-5 " type="number" name="" id="input{{this.id}}" value="1" id="inputProd">
             <button class="col-5 btn btn-success" value="1" max="{{this.stock}}" min="1"
               onclick="addProduto({{this.id}})">Add</button>
+          </div>
         </td>
       </tr>
       {{/each}}
