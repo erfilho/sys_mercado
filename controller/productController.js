@@ -125,11 +125,11 @@ module.exports = class ProductController {
       });
 
       let produtos = "";
-      console.log("Prod", req.query.prod_search);
-      console.log("Cat", req.query.categoria_produto);
+      console.log("Prod", req.body.prod_search.lenght);
+      console.log("Cat", req.body.categoria_produto);
 
-      // category: req.query.categoria_produto,
-      if (req.query.categoria_produto == "*" && req.query.prod_search == "") {
+      // category: req.body.categoria_produto,
+      if (req.body.categoria_produto == "*" && req.body.prod_search == "") {
         produtos = await Products.findAll({
           raw: true,
           where: {
@@ -143,18 +143,15 @@ module.exports = class ProductController {
           ],
         });
       }
-      if (
-        req.query.prod_search.length != "*" &&
-        req.query.categoria_produto != ""
-      ) {
+      if (req.body.prod_search != "" && req.body.categoria_produto != "*") {
         produtos = await Products.findAll({
           raw: true,
           where: {
             UserId: req.session.userid,
             name: {
-              [Op.like]: `%${req.query.prod_search}%`,
+              [Op.like]: `%${req.body.prod_search}%`,
             },
-            category: req.query.categoria_produto,
+            category: req.body.categoria_produto,
           },
           include: [
             {
@@ -164,16 +161,13 @@ module.exports = class ProductController {
           ],
         });
       }
-      if (
-        req.query.prod_search.length != "" &&
-        req.query.categoria_produto == "*"
-      ) {
+      if (req.body.prod_search != "" && req.body.categoria_produto == "*") {
         produtos = await Products.findAll({
           raw: true,
           where: {
             UserId: req.session.userid,
             name: {
-              [Op.like]: `%${req.query.prod_search}%`,
+              [Op.like]: `%${req.body.prod_search}%`,
             },
           },
           include: [
@@ -184,15 +178,12 @@ module.exports = class ProductController {
           ],
         });
       }
-      if (
-        req.query.prod_search.length == "" &&
-        req.query.categoria_produto != "*"
-      ) {
+      if (req.body.prod_search == "" && req.body.categoria_produto != "*") {
         produtos = await Products.findAll({
           raw: true,
           where: {
             UserId: req.session.userid,
-            category: req.query.categoria_produto,
+            category: req.body.categoria_produto,
           },
           include: [
             {
