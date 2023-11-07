@@ -5,9 +5,20 @@
     <div class="container-fluid w-75 d-flex flex-column">
       <div class="w-100 text-center">
         <h1 class="fs-4">Clientes cadastrados</h1>
-      </div>
-      <div class="my-2">
-        <a class="btn btn-primary" href="/clientes/add">Cadastrar novo cliente</a>
+        <form class="w-100 d-flex gap-2" action="/clientes/search" method="post">
+          <div class="col-2 d-flex flex-row justify-content-start align-content-end align-items-end">
+            <a class="btn btn-primary" href="/clientes/add">Cadastrar novo cliente</a>
+          </div>
+          <div class="col-8 d-flex flex-row gap-2 justify-content-between">
+            <div class="w-100 d-flex flex-column justify-content-start align-items-start">
+              <label for="prod_search">Pesquisa:</label>
+              <input class="form-control w-100" type="text" name="search_cli" id="search_cli" placeholder="nome do cliente">
+            </div>
+          </div>
+          <div class="col-2 d-flex flex-row justify-content-start align-content-end align-items-end">          
+            <input class="btn btn-primary" type="submit" value="Pesquisar">
+          </div>
+        </form>
       </div>
       <div class="d-flex flex-column gap-1">
          <div

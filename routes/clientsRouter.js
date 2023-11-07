@@ -8,5 +8,6 @@ router.get("/", clientController.listaClientes);
 router.get("/edit/:id", clientController.editaCliente);
 router.post("/edit/:id", clientController.editaClienteSave);
 router.post("/delete/:id", clientController.apagaClienteConfirma);
+router.post("/search", clientController.searchClient);
 
 module.exports = router;
