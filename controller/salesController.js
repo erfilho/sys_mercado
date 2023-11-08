@@ -2,6 +2,7 @@ const Users = require("../models/Users");
 const Sales = require("../models/Sales");
 const Clients = require("../models/Clients");
 const Products = require("../models/Products");
+const Sequelize = require("sequelize");
 
 module.exports = class SalesController {
   static async novaVenda(req, res) {
@@ -60,11 +61,30 @@ module.exports = class SalesController {
       };
       venda.products = JSON.parse(JSON.stringify(venda.products));
       await Sales.create(venda);
+      for (let i = 0; i < produtoVenda.length; i++) {
+        await Products.update({
+          stock: Sequelize.literal(`CASE WHEN stock >= ${produtoVenda[i].quantidadeVenda} THEN stock - ${produtoVenda[i].quantidadeVenda} ELSE 0 END`),
+        }, {
+          where: { id: produtoVenda[i].id }
+        });
+      }
       res.redirect("/vendas/");
     } catch (error) {
       console.error('Erro ao cadastrar venda:', error);
     }
-    
+
+  }
+
+  static async produtosVenda(req, res) {
+    try {
+      const products = await Sales.findByPk({
+        where: { id: req.params.id, UserId: req.session.userid },
+      });
+      res.render("sales/produtosVenda", { products });
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   static async listaVendas(req, res) {
@@ -82,7 +102,6 @@ module.exports = class SalesController {
         raw: true,
         where: { UserId: req.session.userid },
       });
-      console.log("LISTA VENDAS --------------------------------------", JSON.stringify(vendas));
       res.render("sales/listaVendas", {
         vendas,
         clientes,
