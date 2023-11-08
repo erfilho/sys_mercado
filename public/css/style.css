@@ -38,6 +38,21 @@ background-color: rgb(234, 208, 229);;
   background-color: #c67ed2;
 }
 
+/* Estilização de botões */
+
+#button{
+
+  background: linear-gradient(90deg, rgb(234, 208, 229) 0%,  rgb(214, 144, 205) 100%);
+  border-color: #000000;
+  color: #000000;
+  
+}
+
+#button:hover {
+  transform: scale(1.05);
+}
+
+
 /* tabelas*/
 
 .tabela_vendas .div-table {
