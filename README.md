@@ -24,20 +24,21 @@ Este projeto é um mercadinho simples desenvolvido utilizando Node.js, Express e
 4. Inicie o servidor:
 
 ​
-`npm start`
+`npm run start`
 ​
 
 Agora você pode acessar o mercadinho em [http://localhost:3000](http://localhost:3000).
 
 ## Dados de login
-- Usuário `admin`
-- Senha `admin`
+Você pode fazer o seu cadastro e entrar com o respectivo usuário e senha 
 
 ## Recursos
 
 - Exibir estoque de produtos
 - Cadastro de clientes
 - Cadastro de Vendas
+- Cadastro de produtos
+- Cadastro de categorias
 - Histórico de vendas
 
 ## Tecnologias Utilizadas
@@ -45,5 +46,5 @@ Agora você pode acessar o mercadinho em [http://localhost:3000](http://localhos
 - Node.js
 - Express
 - Handlebars
-
-### Existirão alterações no projeto, provavelmente troca de tecnologias
+- Sequelize
+- Bootstrap
