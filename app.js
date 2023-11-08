@@ -6,7 +6,7 @@ require("dotenv").config();
 app.use(express.static("public"));
 
 conn
-  .sync({ force: false })
+  .sync({ force: false }) 
   .then(() => {
     app.listen(3000, () => {
       console.log("Click here: http://localhost:3000");

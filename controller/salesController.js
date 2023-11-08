@@ -33,7 +33,7 @@ module.exports = class SalesController {
   static async novaVendaSave(req, res) {
     let dados = req.body;
     let IDs = [];
-    let clienteId = parseInt(dados.pop());;
+    let clienteId = parseInt(dados.pop());
     let valorTotal = parseFloat(dados.pop());
     let venda;
     for (let i = 0; i < dados.length; i++) {
@@ -43,28 +43,22 @@ module.exports = class SalesController {
     try {
       let produtoVenda = await Products.findAll({
         where: {
-          id: IDs
-        }
+          id: IDs,
+        },
       });
 
-      async function getCategoryName(id) {
-        let cateroria = await Category.findOne({
-          where: {
-            id: id
-          }
-        });
-        return cateroria.name;
-      }
-
-      produtoVenda = await Promise.all(produtoVenda.map(async item => {
-        let category = await getCategoryName(parseInt(item.category));
-        return {
-          ...item.dataValues,
-          quantidadeVenda: dados.find(dado => dado.id == item.id).quantidade,
-          subtotal: dados.find(dado => dado.id == item.id).subtotal,
-          categoryName: category
-        }
-      }));
+      produtoVenda = await Promise.all(
+        produtoVenda.map(async (item) => {
+          console.log(item);
+          return {
+            ...item.dataValues,
+            quantidadeVenda: dados.find((dado) => dado.id == item.id)
+              .quantidade,
+            subtotal: dados.find((dado) => dado.id == item.id).subtotal,
+            categoryName: item.category,
+          };
+        })
+      );
 
       venda = {
         value: valorTotal,
@@ -74,17 +68,21 @@ module.exports = class SalesController {
       };
       await Sales.create(venda);
       for (let i = 0; i < produtoVenda.length; i++) {
-        await Products.update({
-          stock: Sequelize.literal(`CASE WHEN stock >= ${produtoVenda[i].quantidadeVenda} THEN stock - ${produtoVenda[i].quantidadeVenda} ELSE 0 END`),
-        }, {
-          where: { id: produtoVenda[i].id }
-        });
+        await Products.update(
+          {
+            stock: Sequelize.literal(
+              `CASE WHEN stock >= ${produtoVenda[i].quantidadeVenda} THEN stock - ${produtoVenda[i].quantidadeVenda} ELSE 0 END`
+            ),
+          },
+          {
+            where: { id: produtoVenda[i].id },
+          }
+        );
       }
       res.redirect("/vendas/");
     } catch (error) {
-      console.error('Erro ao cadastrar venda:', error);
+      console.error("Erro ao cadastrar venda:", error);
     }
-
   }
 
   static async produtosVenda(req, res) {
@@ -101,7 +99,6 @@ module.exports = class SalesController {
     } catch (error) {
       console.log(error);
     }
-
   }
 
   static async listaVendas(req, res) {
