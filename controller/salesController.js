@@ -2,6 +2,7 @@ const Users = require("../models/Users");
 const Sales = require("../models/Sales");
 const Clients = require("../models/Clients");
 const Products = require("../models/Products");
+const Category = require("../models/Category");
 const Sequelize = require("sequelize");
 
 module.exports = class SalesController {
@@ -45,13 +46,25 @@ module.exports = class SalesController {
           id: IDs
         }
       });
-      produtoVenda = produtoVenda.map(item => {
+
+      async function getCategoryName(id) {
+        let cateroria = await Category.findOne({
+          where: {
+            id: id
+          }
+        });
+        return cateroria.name;
+      }
+
+      produtoVenda = await Promise.all(produtoVenda.map(async item => {
+        let category = await getCategoryName(parseInt(item.category));
         return {
           ...item.dataValues,
           quantidadeVenda: dados.find(dado => dado.id == item.id).quantidade,
-          subtotal: dados.find(dado => dado.id == item.id).subtotal
+          subtotal: dados.find(dado => dado.id == item.id).subtotal,
+          categoryName: category
         }
-      });
+      }));
 
       venda = {
         value: valorTotal,
@@ -59,7 +72,6 @@ module.exports = class SalesController {
         ClientId: clienteId,
         UserId: req.session.userid,
       };
-      venda.products = JSON.parse(JSON.stringify(venda.products));
       await Sales.create(venda);
       for (let i = 0; i < produtoVenda.length; i++) {
         await Products.update({
@@ -77,10 +89,15 @@ module.exports = class SalesController {
 
   static async produtosVenda(req, res) {
     try {
-      const products = await Sales.findByPk({
-        where: { id: req.params.id, UserId: req.session.userid },
+      const products = await Sales.findOne({
+        where: { id: req.params.id },
+        include: [
+          {
+            model: Clients,
+          },
+        ],
       });
-      res.render("sales/produtosVenda", { products });
+      res.render("sales/produtosVenda", { products: products.dataValues });
     } catch (error) {
       console.log(error);
     }

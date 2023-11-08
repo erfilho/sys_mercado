@@ -1,11 +1,12 @@
 {{> navBar tela="Cadastro de vendas"}}
 
-<div class="row mx-0 minMainScreen bg-secondary">
-  <h1 class="text-center ">Venda</h1>
+<div class="row mx-0 minMainScreen">
+  <h2 class="text-center ">Venda</h2>
   <div class="col-12 col-md-5">
+    <h2 class="text-center">Produtos</h2>
     {{> tabelaProdutos products}}
   </div>
-  <div class="col-12 bg-danger col-md-7">
+  <div class="col-12 col-md-7">
     <div class="row">
       <h2 class="text-center">Carrinho</h2>
       {{> tabelaCarrinho}}
@@ -28,5 +29,6 @@
     </div>
   </div>
 </div>
+{{> modalEstoqueInsuficiente}}
 
 <script src="/js/venda.js"></script>

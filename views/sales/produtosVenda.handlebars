@@ -1,0 +1,26 @@
+{{> navBar tela= "Produtos da venda" }}
+<div class="gap-3 row">
+  <h1 class="col-10 text-center mx-auto">Produtos da venda {{products.id}}</h1>
+  <h3 class="col-10 text-center mx-auto">Cliente: {{products.Client.dataValues.name}}</h3>
+  <div class="col-10 mx-auto">
+    {{> headerTableProductVenda}}
+    {{#each products.products}}
+    {{> produtoVenda}}
+    {{/each}}
+    <div class="d-flex flex-row text-center">
+      <p class="col-4 text-center"> </p>
+      <p class="col-2 text-center"> </p>
+      <p class="col-2 text-center">  </p>
+      <p class="col-2 text-center">  </p>
+      <p class="col-2 text-center"> {{products.value}} </p>
+      <hr class="my-0" />
+    </div>
+  </div>
+  <div>
+    <h3 class="text-center">Total: R$ {{products.value}}</h3>
+  </div>
+  <div class="col-10 mx-auto d-flex justify-content-center">
+    <a href="/vendas" class="btn btn-success col-3">Voltar</a>
+  </div>
+
+</div>

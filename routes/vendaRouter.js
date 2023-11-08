@@ -6,8 +6,7 @@ const router = express.Router();
 
 router.get("/", SalesController.listaVendas);
 router.get("/add", SalesController.novaVenda);
-router.get("/edit/:id", SalesController.editaVenda);
-router.post("/edit/:id", SalesController.editaVendaSave);
+router.get("/produtos/:id", SalesController.produtosVenda);
 router.post("/add", SalesController.novaVendaSave);
 router.post("/delete/:id", SalesController.apagaVendaConfirma);
 

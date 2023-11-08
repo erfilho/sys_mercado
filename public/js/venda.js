@@ -38,33 +38,42 @@ function atualizarInput() {
   });
 }
 
-
-
 // add produto no carrinho
 function addProduto(id) {
   const quantidade = parseInt($(`#input${id}`).val());
   const max = parseInt($(`#input${id}`).attr("max"));
   if (quantidade > max) {
-    alert(`Quantidade ${quantidade} maior que o estoque ${max}`);
+    $('#estoqueInsuficiente').modal('show');
     return;
   } else {
-    const nome = $(`#name${id}`).text();
-    const valor = parseFloat($(`#valor${id}`).text());
-    const subtotal = quantidade * valor;
-    const template = `
-    <tr id="produto${id}" data-id="${id}">
-      <td>${nome}</td>
-      <td>${quantidade}</td>
-      <td>${valor}</td>
-      <td>${subtotal.toFixed(2)}</td>
-      <td><button class="btn btn-danger" onclick="removerProduto(${id})">Remover</button></td>
-    </tr>
-    `
-    $("#carrinho").DataTable().row.add($(template)).draw(false);
-    calculaValor();
-    atualizarInput();
-
-
+    let existe = false;
+    $("#carrinho tr:gt(0)").each(function () {
+      if ($(this).data('id') == id) {
+        existe = true;
+        let quantidadeAtual = parseInt($(this).find("td:eq(1)").text());
+        let quantidadeNova = quantidadeAtual + quantidade;
+        $(this).find("td:eq(1)").text(quantidadeNova);
+        calculaValor();
+        atualizarInput();
+      }
+    });
+    if (!existe) {
+      const nome = $(`#name${id}`).text();
+      const valor = parseFloat($(`#valor${id}`).text());
+      const subtotal = quantidade * valor;
+      const template = `
+        <tr id="produto${id}" data-id="${id}">
+          <td>${nome}</td>
+          <td>${quantidade}</td>
+          <td>${valor}</td>
+          <td>${subtotal.toFixed(2)}</td>
+          <td><button class="btn btn-danger" onclick="removerProduto(${id})">Remover</button></td>
+        </tr>
+        `;
+      $("#carrinho").DataTable().row.add($(template)).draw(false);
+      calculaValor();
+      atualizarInput();
+    }
   };
 }
 

@@ -33,23 +33,24 @@
         
         
 
-      <div class="d-flex flex-column gap-2">
-         <div
-    class="d-flex flex-row flex-wrap rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1"
-  >
+    <div class="d-flex flex-column gap-2">
+      <div
+        class="d-flex flex-row flex-wrap rounded border border-1 justify-content-around align-items-center align-content-center my-0 w-100 py-1">
 
         {{> headerTableProduct}}
         {{#each produtos}}
-          {{> produto}}
+        {{> produto}}
         {{/each}}
-         </div>
       </div>
     </div>
   </div>
+</div>
 <!-- Script para abrir e fechar a tela de confirmação -->
 <script>
   function openConfirmation(id) {
-  document.getElementById(`confirmation${id}`).style.display = "flex"; }
+    document.getElementById(`confirmation${id}`).style.display = "flex";
+  }
   function closeConfirmation(id) {
-  document.getElementById(`confirmation${id}`).style.display = "none"; }
+    document.getElementById(`confirmation${id}`).style.display = "none";
+  }
 </script>
