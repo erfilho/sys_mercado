@@ -53,6 +53,13 @@ background-color: rgb(234, 208, 229);;
 }
 
 
+#backSobre {
+
+  background: linear-gradient(90deg, rgb(255, 255, 255) 0%,  rgb(214, 144, 205) 100%);
+
+}
+
+
 /* tabelas*/
 
 .tabela_vendas .div-table {
