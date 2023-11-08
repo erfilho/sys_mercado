@@ -12,6 +12,7 @@ const helpers = require("handlebars-helpers")();
 const flash = require("express-flash");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
+const custonHelpers = require("../helpers/helpers")
 
 // CONFIGURANDO SESSÃO
 app.use(
@@ -49,7 +50,7 @@ app.set("view engine", "handlebars");
 
 // CONFIGURANDO O HANDLEBARS PARTIALS
 const hbs = exphbs.create({
-  helpers: helpers,
+  helpers: [helpers, custonHelpers],
   partialsDir: ["views/partials"],
 });
 

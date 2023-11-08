@@ -16,21 +16,8 @@ function calculaValor() {
   }
 }
 
-// remover produto do carrinho
-function removerProduto(id) {
-  $("#carrinho").DataTable().row(`#produto${id}`).remove().draw(false);
-  calculaValor();
-}
-$(document).ready(function () {
-  $("#cliente").on("change", function () {
-    var valorSelecionado = $(this).val();
-    if (valorSelecionado != "") {
-      calculaValor();
-    } else {
-      $("#btnFinalizar").addClass("disabled");
-    }
-  });
-});
+
+
 // atualizar input produtos
 function atualizarInput() {
   $(".quantidadeInput input").each(function () {
@@ -38,10 +25,44 @@ function atualizarInput() {
   });
 }
 
+function adicionaQuantidade(id, quantidade) {
+  const linha = $('#data tbody tr[data-id="'+ id +'"]');
+  const estoque = parseInt(linha.find('td:eq(1)').text())
+  let novaQuant = estoque + quantidade;
+  linha.find('td:eq(1)').text(novaQuant);
+  $('#data').DataTable().cell(linha, 1).data(novaQuant).draw(false);
+  $(`#input${id}`).attr("max", novaQuant);
+}
+
+function subtrairQuantidade(id, quantidade) {
+  const linha = $('#data tbody tr[data-id="'+ id +'"]');
+  const estoque = parseInt(linha.find('td:eq(1)').text())
+  let novaQuant;
+  console.log(estoque)
+  if (estoque > 0) {
+    novaQuant = estoque - quantidade;
+    linha.find('td:eq(1)').text(novaQuant);
+    $('#data').DataTable().cell(linha, 1).data(novaQuant).draw(false);
+  }
+
+  $(`#input${id}`).attr("max", novaQuant);
+}
+
+// remover produto do carrinho
+function removerProduto(id) {
+  const linha = $('#carrinho tbody tr[data-id="'+ id +'"]');
+  const quantidade = parseInt(linha.find('td:eq(1)').text())
+  $("#carrinho").DataTable().row(`#produto${id}`).remove().draw(false);
+  console.log("quantidade",quantidade)
+  calculaValor();
+  adicionaQuantidade(id, quantidade)
+}
+
 // add produto no carrinho
 function addProduto(id) {
   const quantidade = parseInt($(`#input${id}`).val());
   const max = parseInt($(`#input${id}`).attr("max"));
+  console.log("quantidade, max", quantidade, max)
   if (quantidade > max) {
     $('#estoqueInsuficiente').modal('show');
     return;
@@ -55,6 +76,7 @@ function addProduto(id) {
         $(this).find("td:eq(1)").text(quantidadeNova);
         calculaValor();
         atualizarInput();
+        subtrairQuantidade(id, quantidade)
       }
     });
     if (!existe) {
@@ -73,6 +95,7 @@ function addProduto(id) {
       $("#carrinho").DataTable().row.add($(template)).draw(false);
       calculaValor();
       atualizarInput();
+      subtrairQuantidade(id, quantidade)
     }
   };
 }
